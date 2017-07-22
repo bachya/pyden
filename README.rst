@@ -1,10 +1,8 @@
-pyden: a Python library for data from the City and County of Denver, CO
-=======================================================================
+pyden: data from the City and County of Denver, CO
+==================================================
 
-Coming soon!
-
-.. .. image:: https://travis-ci.org/bachya/regenmaschine.svg?branch=master
-..   :target: https://travis-ci.org/bachya/regenmaschine
+.. image:: https://travis-ci.org/bachya/pyden.svg?branch=master
+  :target: https://travis-ci.org/bachya/pyden
 
 .. .. image:: https://img.shields.io/pypi/v/regenmaschine.svg
 ..   :target: https://pypi.python.org/pypi/regenmaschine
@@ -15,14 +13,14 @@ Coming soon!
 .. .. image:: https://img.shields.io/pypi/l/Regenmaschine.svg
 ..   :target: https://github.com/bachya/regenmaschine/blob/master/LICENSE
 
-.. .. image:: https://codecov.io/gh/bachya/regenmaschine/branch/master/graph/badge.svg
-..   :target: https://codecov.io/gh/bachya/regenmaschine
+.. image:: https://codecov.io/gh/bachya/pyden/branch/master/graph/badge.svg
+  :target: https://codecov.io/gh/bachya/pyden
 
-.. .. image:: https://img.shields.io/codeclimate/github/bachya/regenmaschine.svg
-..   :target: https://codeclimate.com/github/bachya/regenmaschine
+.. image:: https://img.shields.io/codeclimate/github/bachya/pyden.svg
+  :target: https://codeclimate.com/github/bachya/pyden
 
-.. .. image:: https://img.shields.io/badge/SayThanks-!-1EAEDB.svg
-..   :target: https://saythanks.io/to/bachya
+.. image:: https://img.shields.io/badge/SayThanks-!-1EAEDB.svg
+  :target: https://saythanks.io/to/bachya
 
 .. Regenmaschine (German for "rain machine") is a simple, clean, well-tested Python
 .. library for interacting with `RainMachine™ smart sprinkler controllers
