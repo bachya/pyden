@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="utf-8"?><testsuite errors="0" failures="0" name="pytest" skips="0" tests="1" time="0.221"><testcase classname="tests.test_trash" file="tests/test_trash.py" line="20" name="test_schedule" time="0.05814671516418457"></testcase></testsuite>

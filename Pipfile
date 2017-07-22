@@ -10,10 +10,11 @@ requests-mock = "*"
 twine = "*"
 codecov = "*"
 tox = "*"
-Sphinx = "*"
 flake8 = "*"
 detox = "*"
+Sphinx = "*"
 
 [packages]
 requests = "*"
-maya = "*"
+ics = "*"
+geocoder = "*"

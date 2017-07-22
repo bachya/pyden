@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "d0b757438f755ed60b8032749dfed9a57174612bb07efab6e70a3da9b96008bb"
+            "sha256": "35901750430909f7cf2cc38815d8993eff6511c797fee17d8ce432fb80fea060"
         },
         "requires": {},
         "sources": [
@@ -12,50 +12,29 @@
         ]
     },
     "default": {
+        "arrow": {
+            "version": "==0.4.2"
+        },
         "certifi": {
             "version": "==2017.4.17"
         },
         "chardet": {
             "version": "==3.0.4"
         },
-        "dateparser": {
-            "version": "==0.6.0"
-        },
-        "humanize": {
-            "version": "==0.5.1"
+        "ics": {
+            "version": "==0.3.1"
         },
         "idna": {
             "version": "==2.5"
         },
-        "maya": {
-            "version": "==0.3.2"
-        },
-        "pendulum": {
-            "version": "==1.2.4"
-        },
         "python-dateutil": {
             "version": "==2.6.1"
-        },
-        "pytz": {
-            "version": "==2017.2"
-        },
-        "pytzdata": {
-            "version": "==2017.2"
-        },
-        "regex": {
-            "version": "==2017.07.11"
         },
         "requests": {
             "version": "==2.18.1"
         },
-        "ruamel.yaml": {
-            "version": "==0.15.19"
-        },
         "six": {
             "version": "==1.10.0"
-        },
-        "tzlocal": {
-            "version": "==1.4"
         },
         "urllib3": {
             "version": "==1.21.1"

@@ -30,7 +30,7 @@ if sys.argv[-1] == "publish":
     os.system("python setup.py sdist bdist_wheel upload")
     sys.exit()
 
-REQUIRED = ['maya', 'requests']
+REQUIRED = ['arrow', 'requests']
 
 PACKAGES = ['pyden']
 
@@ -41,7 +41,7 @@ with open(os.path.join(HERE, 'pyden', '__version__.py'), 'r') as f:
 setup(
     name='pyden',
     version=ABOUT['__version__'],
-    description='A library to get information from the City and County of Denver, CO',
+    description='A library to get for the City and County of Denver, CO',
     long_description=LONG_DESC,
     author='Aaron Bach',
     author_email='bachya1208@gmail.com',
@@ -53,8 +53,7 @@ setup(
         'Development Status :: 1 - Planning',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
-        'Natural Language :: English',
-        'Programming Language :: Python',
+        'Natural Language :: English', 'Programming Language :: Python',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.3',
