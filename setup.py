@@ -50,7 +50,7 @@ setup(
     install_requires=REQUIRED,
     license='MIT',
     classifiers=(
-        'Development Status :: 1 - Planning',
+        'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Natural Language :: English', 'Programming Language :: Python',
