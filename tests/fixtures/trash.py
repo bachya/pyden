@@ -14,14 +14,12 @@ import pytest
 @pytest.fixture(scope='session')
 def coordinates():
     """ Fixture to return a set of coordinates """
-
     return (40.6892494, -74.0445004)
 
 
 @pytest.fixture(scope='session')
 def geocode_response_200():
     """ Fixture to return a sample of Google's geocoding API JSON """
-
     return {
         "results": [{
             "address_components": [{
@@ -565,17 +563,12 @@ def geocode_response_200():
 @pytest.fixture(scope='session')
 def geocode_response_404():
     """ Fixture to return a sample of Google's geocoding API JSON """
-
-    return {
-        "results": [],
-        "status": "OK"
-    }
+    return {"results": [], "status": "OK"}
 
 
 @pytest.fixture(scope='session')
 def geocode_url(coordinates):
     """ Fixture to return the URL used to geocode """
-
     return 'https://maps.googleapis.com/maps/api/geocode/json?language=' \
             '&latlng={0}&sensor=false'.format(', '.join(map(str, coordinates)))
 
@@ -583,14 +576,12 @@ def geocode_url(coordinates):
 @pytest.fixture(scope='session')
 def place_id():
     """ Fixture to return a Recollect place ID """
-
     return 'AB047B30-6E8E-11E7-BE70-041F908560DB'
 
 
 @pytest.fixture(scope='session')
 def place_lookup_url(coordinates, service_id):
     """ Fixture to return the URL used to query schedule data """
-
     lat, long = coordinates
     return 'https://recollect.net/api/lookup/{0},{1}.json?service={2}' \
             '&address=1+Liberty+Island+-+Ellis+Island%2C+New+York%2C+' \
@@ -603,7 +594,6 @@ def place_lookup_url(coordinates, service_id):
 @pytest.fixture(scope='session')
 def place_lookup_response_200(coordinates, place_id):
     """ Fixture to return a successful schedule() response """
-
     lat, long = coordinates
     return {
         'place': {
@@ -626,10 +616,7 @@ def place_lookup_response_200(coordinates, place_id):
 @pytest.fixture(scope='session')
 def place_lookup_response_404():
     """ Fixture to return a successful schedule() response """
-
-    return {
-        'place': {}
-    }
+    return {'place': {}}
 
 
 @pytest.fixture(scope='session')
@@ -958,7 +945,6 @@ def schedule_response_200_json():
 @pytest.fixture(scope='session')
 def schedule_url(place_id, service_id):
     """ Fixture to return the URL used to query schedule data """
-
     return 'https://recollect.net/api/places/{0}/services/{1}/' \
             'events.en-US.ics'.format(place_id, service_id)
 
@@ -966,5 +952,4 @@ def schedule_url(place_id, service_id):
 @pytest.fixture(scope='session')
 def service_id():
     """ Fixture to return a Recollect service ID """
-
     return 248

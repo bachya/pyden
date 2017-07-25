@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "35901750430909f7cf2cc38815d8993eff6511c797fee17d8ce432fb80fea060"
+            "sha256": "c8937dc4a655c04176bbdc587bc32a97bda792f998b30e25d64d86f35b5fd47a"
         },
         "requires": {},
         "sources": [
@@ -21,6 +21,15 @@
         "chardet": {
             "version": "==3.0.4"
         },
+        "click": {
+            "version": "==6.7"
+        },
+        "decorator": {
+            "version": "==4.1.2"
+        },
+        "geocoder": {
+            "version": "==1.23.2"
+        },
         "ics": {
             "version": "==0.3.1"
         },
@@ -30,14 +39,17 @@
         "python-dateutil": {
             "version": "==2.6.1"
         },
+        "ratelim": {
+            "version": "==0.1.6"
+        },
         "requests": {
-            "version": "==2.18.1"
+            "version": "==2.18.2"
         },
         "six": {
             "version": "==1.10.0"
         },
         "urllib3": {
-            "version": "==1.21.1"
+            "version": "==1.22"
         }
     },
     "develop": {
@@ -120,7 +132,7 @@
             "version": "==2017.2"
         },
         "requests": {
-            "version": "==2.18.1"
+            "version": "==2.18.2"
         },
         "requests-mock": {
             "version": "==1.3.0"
@@ -129,7 +141,7 @@
             "version": "==0.8.0"
         },
         "setuptools": {
-            "version": "==36.2.0"
+            "version": "==36.2.2"
         },
         "six": {
             "version": "==1.10.0"
@@ -147,13 +159,13 @@
             "version": "==2.7.0"
         },
         "tqdm": {
-            "version": "==4.14.0"
+            "version": "==4.15.0"
         },
         "twine": {
             "version": "==1.9.1"
         },
         "urllib3": {
-            "version": "==1.21.1"
+            "version": "==1.22"
         },
         "virtualenv": {
             "version": "==15.1.0"

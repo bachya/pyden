@@ -5,4 +5,6 @@ Email: bachya1208@gmail.com
 Github: https://github.com/bachya
 """
 
-from .client import Client # noqa
+from .__version__ import __author__, __author_email__, __copyright__, __license__ # noqa
+from .__version__ import __description__, __title__, __url__, __version__ # noqa
+from .trash import TrashClient # noqa

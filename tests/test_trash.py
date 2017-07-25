@@ -19,59 +19,85 @@ from tests.fixtures.trash import *
 # pylint: disable=too-many-arguments
 
 
-def test_bad_request(coordinates, geocode_response_200, geocode_url,
-                     place_lookup_response_200, place_lookup_url,
-                     schedule_response_200, schedule_url):
-    """ Tests a bad overall request """
+def test_client_place_id(place_id):
+    """ Tests the creation of a TrashClient from a place ID """
+    client_manual = pyden.TrashClient(place_id)
+    client_factory = pyden.TrashClient.from_place_id(place_id)
+    assert client_manual.place_id == place_id
+    assert str(client_manual) == json.dumps({
+        'base_url':
+        'https://recollect.net/api',
+        'session':
+        None,
+        '_place_id':
+        place_id
+    })
+    assert client_manual == client_factory
+
+
+def test_client_coordinates(coordinates, geocode_response_200, geocode_url,
+                            place_id, place_lookup_response_200,
+                            place_lookup_url):
+    """ Tests the creation of a TrashClient from a latitude and longitude """
+    latitude, longitude = coordinates
 
     with requests_mock.Mocker() as mock:
         mock.get(geocode_url, text=json.dumps(geocode_response_200))
         mock.get(place_lookup_url, text=json.dumps(place_lookup_response_200))
-        mock.get(schedule_url, text=schedule_response_200)
-        mock.get('https://recollect.net/api/bad_endpoint', status_code=404)
 
-        with pytest.raises(pyden.exceptions.HTTPError) as exc_info:
-            client = pyden.Client(coordinates=coordinates)
-            client.trash.get('bad_endpoint')
-            assert '404 Client Error: Not Found' in str(exc_info)
+        client_manual = pyden.TrashClient(place_id)
+        client_factory = pyden.TrashClient.from_coordinates(
+            latitude, longitude)
+        assert client_factory.place_id == place_id
+        assert str(client_factory) == json.dumps({
+            'base_url':
+            'https://recollect.net/api',
+            'session':
+            None,
+            '_place_id':
+            place_id
+        })
+        assert client_manual.place_id == place_id
 
 
 def test_schedule_successful(coordinates, geocode_response_200, geocode_url,
                              place_lookup_response_200, place_lookup_url,
-                             schedule_response_200, schedule_response_200_json,
-                             schedule_url):
+                             schedule_response_200, schedule_url):
     """ Tests successfull retrieving the schedule """
+    latitude, longitude = coordinates
 
     with requests_mock.Mocker() as mock:
         mock.get(geocode_url, text=json.dumps(geocode_response_200))
         mock.get(place_lookup_url, text=json.dumps(place_lookup_response_200))
         mock.get(schedule_url, text=schedule_response_200)
 
-        client = pyden.Client(coordinates=coordinates)
-        assert client.trash.schedule() == schedule_response_200_json
+        client = pyden.TrashClient.from_coordinates(latitude, longitude)
+        assert client.schedule()
 
 
-def test_unsuccessful_geocode(coordinates, geocode_response_404, geocode_url):
-    """ Tests an unsuccessful geocode lookup """
-
+def test_schedule_unsuccessful(geocode_response_200):
+    """ Tests an unsuccessful schedule lookup """
     with requests_mock.Mocker() as mock:
-        mock.get(geocode_url, text=json.dumps(geocode_response_404))
+        mock.get(geocode_url, text=json.dumps(geocode_response_200))
+        mock.get(schedule_url, exc=Exception)
 
-        with pytest.raises(pyden.exceptions.GeocodingError) as exc_info:
-            pyden.Client(coordinates=coordinates)
-            assert 'Unable to get an address for coordinates' in str(exc_info)
+        with pytest.raises(Exception) as exc_info:
+            client = pyden.TrashClient('12345')
+            client.schedule()
+            assert 'Unable to get trash schedule for place ID' in str(exc_info)
 
 
 def test_unsuccessful_place_lookup(coordinates, geocode_response_200,
                                    geocode_url, place_lookup_response_404,
                                    place_lookup_url):
     """ Tests an unsuccessful place lookup """
+    latitude, longitude = coordinates
 
     with requests_mock.Mocker() as mock:
         mock.get(geocode_url, text=json.dumps(geocode_response_200))
         mock.get(place_lookup_url, text=json.dumps(place_lookup_response_404))
 
         with pytest.raises(pyden.exceptions.GeocodingError) as exc_info:
-            pyden.Client(coordinates=coordinates)
+            pyden.TrashClient.from_coordinates(latitude, longitude)
             assert 'Unable to get a valid schedule for address' in str(
                 exc_info)

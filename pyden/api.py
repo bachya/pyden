@@ -33,7 +33,7 @@ class BaseAPI(object):
         try:
             resp.raise_for_status()
         except requests.exceptions.HTTPError as exc_info:
-            raise pyden.exceptions.HTTPError(str(exc_info))
+            raise pyden.exceptions.HTTPError(str(exc_info)) from None
 
         return resp
 
