@@ -24,14 +24,6 @@ def test_client_place_id(place_id):
     client_manual = pyden.TrashClient(place_id)
     client_factory = pyden.TrashClient.from_place_id(place_id)
     assert client_manual.place_id == place_id
-    assert str(client_manual) == json.dumps({
-        'base_url':
-        'https://recollect.net/api',
-        'session':
-        None,
-        '_place_id':
-        place_id
-    })
     assert client_manual == client_factory
 
 
@@ -49,14 +41,6 @@ def test_client_coordinates(coordinates, geocode_response_200, geocode_url,
         client_factory = pyden.TrashClient.from_coordinates(
             latitude, longitude)
         assert client_factory.place_id == place_id
-        assert str(client_factory) == json.dumps({
-            'base_url':
-            'https://recollect.net/api',
-            'session':
-            None,
-            '_place_id':
-            place_id
-        })
         assert client_manual.place_id == place_id
 
 

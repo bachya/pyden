@@ -5,8 +5,6 @@ Email: bachya1208@gmail.com
 Github: https://github.com/bachya
 """
 
-import json
-
 import arrow
 import ics
 
@@ -29,10 +27,6 @@ class TrashClient(api.BaseAPI):
         """ Initialize! """
         super(TrashClient, self).__init__(BASE_URL, **kwargs)
         self._place_id = place_id
-
-    def __str__(self):
-        """ Returns a string representation of this object """
-        return json.dumps(self.__dict__)
 
     def __eq__(self, other):
         """ Defines how this object should be compared to others """
