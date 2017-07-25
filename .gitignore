@@ -7,3 +7,4 @@ dist
 build
 .tox
 .ta
+report.xml
