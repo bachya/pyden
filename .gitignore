@@ -8,3 +8,4 @@ build
 .tox
 .ta
 report.xml
+coverage.xml
