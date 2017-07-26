@@ -5,6 +5,8 @@ Email: bachya1208@gmail.com
 Github: https://github.com/bachya
 """
 
+from collections import OrderedDict
+
 import arrow
 import ics
 import requests_cache
@@ -97,7 +99,7 @@ class TrashClient(api.BaseAPI):
 
     def schedule(self):
         """ Return the schedule from the current date forward """
-        events = {}
+        events = OrderedDict()
 
         try:
             resp = self.get(SCHEDULE_URL.format(self.place_id, SERVICE_ID))
