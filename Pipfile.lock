@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "c8937dc4a655c04176bbdc587bc32a97bda792f998b30e25d64d86f35b5fd47a"
+            "sha256": "c51e162acb450a8f6a3ba082aa8c17fea3a0f4c91c5c50434e890b1cc0058ce5"
         },
         "requires": {},
         "sources": [
@@ -44,6 +44,9 @@
         },
         "requests": {
             "version": "==2.18.2"
+        },
+        "requests-cache": {
+            "version": "==0.4.13"
         },
         "six": {
             "version": "==1.10.0"
@@ -141,7 +144,7 @@
             "version": "==0.8.0"
         },
         "setuptools": {
-            "version": "==36.2.2"
+            "version": "==36.2.4"
         },
         "six": {
             "version": "==1.10.0"

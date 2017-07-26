@@ -7,6 +7,7 @@ Github: https://github.com/bachya
 
 import arrow
 import ics
+import requests_cache
 
 import pyden.api as api
 import pyden.exceptions as exceptions
@@ -16,6 +17,7 @@ BASE_URL = 'https://recollect.net/api'
 LOOKUP_URL = 'lookup/{0},{1}.json?service={2}&address={3}&locale=en-US&' \
         'postal_code={4}&street_number={5}&street_name={6}&subpremise=&' \
         'locality={7}&territory={8}&country={9}'
+SCHEDULE_CACHE_TIMING = 60 * 60 * 24 * 7 * 4 * 1
 SCHEDULE_URL = 'places/{0}/services/{1}/events.en-US.ics'
 SERVICE_ID = 248
 
@@ -23,8 +25,16 @@ SERVICE_ID = 248
 class TrashClient(api.BaseAPI):
     """ A class to handle requesting trash/recycling info """
 
-    def __init__(self, place_id, **kwargs):
+    def __init__(self,
+                 place_id,
+                 cache=True,
+                 time_to_cache=SCHEDULE_CACHE_TIMING,
+                 **kwargs):
         """ Initialize! """
+        if cache:
+            requests_cache.install_cache(
+                'trash_cache', backend='memory', expire_after=time_to_cache)
+
         super(TrashClient, self).__init__(BASE_URL, **kwargs)
         self._place_id = place_id
 
@@ -73,6 +83,17 @@ class TrashClient(api.BaseAPI):
     def from_place_id(cls, place_id, **kwargs):
         """ Create a TrashClient based on a passed-in place_id """
         return cls(place_id, **kwargs)
+
+    def next_pickup(self, pickup_type):
+        """ Figures out the next pickup date for a particular type """
+        schedule = self.schedule()
+        for date, pickups in schedule.items():
+            try:
+                if pickups[pickup_type] is True:
+                    return date
+            except KeyError:
+                raise exceptions.TrashTypeError(
+                    'Invalid pickup type: {}'.format(pickup_type)) from None
 
     def schedule(self):
         """ Return the schedule from the current date forward """

@@ -30,6 +30,6 @@ def test_bad_request(geocode_response_200, geocode_url,
         mock.get('https://recollect.net/api/bad_endpoint', status_code=404)
 
         with pytest.raises(pyden.exceptions.HTTPError) as exc_info:
-            client = pyden.TrashClient('1234')
+            client = pyden.TrashClient('1234', cache=False)
             client.get('bad_endpoint')
             assert '404 Client Error: Not Found' in str(exc_info)

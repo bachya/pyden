@@ -633,151 +633,151 @@ X-WR-CALNAME:8373 East 55th Avenue\, Denver\, CO 80216 US
 X-WR-TIMEZONE:America/Denver
 BEGIN:VEVENT
 DESCRIPTION:Trash and compost (sign-up only)
-DTSTART;VALUE=DATE:20170710
+DTSTART;VALUE=DATE:21000710
 SUMMARY:Trash and compost (sign-up only)
 UID:2017-07-10-Denver-waste-@recollect.net
 END:VEVENT
 BEGIN:VEVENT
 DESCRIPTION:Trash\, recycling\, and compost (sign-up only)
-DTSTART;VALUE=DATE:20170717
+DTSTART;VALUE=DATE:21000717
 SUMMARY:Trash\, recycling\, and compost (sign-up only)
 UID:2017-07-17-Denver-waste-@recollect.net
 END:VEVENT
 BEGIN:VEVENT
 DESCRIPTION:Trash and compost (sign-up only)
-DTSTART;VALUE=DATE:20170724
+DTSTART;VALUE=DATE:21000724
 SUMMARY:Trash and compost (sign-up only)
 UID:2017-07-24-Denver-waste-@recollect.net
 END:VEVENT
 BEGIN:VEVENT
 DESCRIPTION:Trash\, extra trash\, recycling\, and compost (sign-up only)
-DTSTART;VALUE=DATE:20170731
+DTSTART;VALUE=DATE:21000731
 SUMMARY:Trash\, extra trash\, recycling\, and compost (sign-up only)
 UID:2017-07-31-Denver-waste-@recollect.net
 END:VEVENT
 BEGIN:VEVENT
 DESCRIPTION:Trash and compost (sign-up only)
-DTSTART;VALUE=DATE:20170807
+DTSTART;VALUE=DATE:21000807
 SUMMARY:Trash and compost (sign-up only)
 UID:2017-08-07-Denver-waste-@recollect.net
 END:VEVENT
 BEGIN:VEVENT
 DESCRIPTION:Trash\, recycling\, and compost (sign-up only)
-DTSTART;VALUE=DATE:20170814
+DTSTART;VALUE=DATE:21000814
 SUMMARY:Trash\, recycling\, and compost (sign-up only)
 UID:2017-08-14-Denver-waste-@recollect.net
 END:VEVENT
 BEGIN:VEVENT
 DESCRIPTION:Trash and compost (sign-up only)
-DTSTART;VALUE=DATE:20170821
+DTSTART;VALUE=DATE:21000821
 SUMMARY:Trash and compost (sign-up only)
 UID:2017-08-21-Denver-waste-@recollect.net
 END:VEVENT
 BEGIN:VEVENT
 DESCRIPTION:Trash\, extra trash\, recycling\, and compost (sign-up only)
-DTSTART;VALUE=DATE:20170828
+DTSTART;VALUE=DATE:21000828
 SUMMARY:Trash\, extra trash\, recycling\, and compost (sign-up only)
 UID:2017-08-28-Denver-waste-@recollect.net
 END:VEVENT
 BEGIN:VEVENT
 DESCRIPTION:Trash and compost (sign-up only)
-DTSTART;VALUE=DATE:20170905
+DTSTART;VALUE=DATE:21000905
 SUMMARY:Trash and compost (sign-up only)
 UID:2017-09-05-Denver-waste-@recollect.net
 END:VEVENT
 BEGIN:VEVENT
 DESCRIPTION:Trash\, recycling\, and compost (sign-up only)
-DTSTART;VALUE=DATE:20170911
+DTSTART;VALUE=DATE:21000911
 SUMMARY:Trash\, recycling\, and compost (sign-up only)
 UID:2017-09-11-Denver-waste-@recollect.net
 END:VEVENT
 BEGIN:VEVENT
 DESCRIPTION:Trash and compost (sign-up only)
-DTSTART;VALUE=DATE:20170918
+DTSTART;VALUE=DATE:21000918
 SUMMARY:Trash and compost (sign-up only)
 UID:2017-09-18-Denver-waste-@recollect.net
 END:VEVENT
 BEGIN:VEVENT
 DESCRIPTION:Trash\, extra trash\, recycling\, and compost (sign-up only)
-DTSTART;VALUE=DATE:20170925
+DTSTART;VALUE=DATE:21000925
 SUMMARY:Trash\, extra trash\, recycling\, and compost (sign-up only)
 UID:2017-09-25-Denver-waste-@recollect.net
 END:VEVENT
 BEGIN:VEVENT
 DESCRIPTION:Trash and compost (sign-up only)
-DTSTART;VALUE=DATE:20171002
+DTSTART;VALUE=DATE:21001002
 SUMMARY:Trash and compost (sign-up only)
 UID:2017-10-02-Denver-waste-@recollect.net
 END:VEVENT
 BEGIN:VEVENT
 DESCRIPTION:Trash\, recycling\, and compost (sign-up only)
-DTSTART;VALUE=DATE:20171009
+DTSTART;VALUE=DATE:21001009
 SUMMARY:Trash\, recycling\, and compost (sign-up only)
 UID:2017-10-09-Denver-waste-@recollect.net
 END:VEVENT
 BEGIN:VEVENT
 DESCRIPTION:Trash and compost (sign-up only)
-DTSTART;VALUE=DATE:20171016
+DTSTART;VALUE=DATE:21001016
 SUMMARY:Trash and compost (sign-up only)
 UID:2017-10-16-Denver-waste-@recollect.net
 END:VEVENT
 BEGIN:VEVENT
 DESCRIPTION:Trash\, extra trash\, recycling\, and compost (sign-up only)
-DTSTART;VALUE=DATE:20171023
+DTSTART;VALUE=DATE:21001023
 SUMMARY:Trash\, extra trash\, recycling\, and compost (sign-up only)
 UID:2017-10-23-Denver-waste-@recollect.net
 END:VEVENT
 BEGIN:VEVENT
 DESCRIPTION:Trash and compost (sign-up only)
-DTSTART;VALUE=DATE:20171030
+DTSTART;VALUE=DATE:21001030
 SUMMARY:Trash and compost (sign-up only)
 UID:2017-10-30-Denver-waste-@recollect.net
 END:VEVENT
 BEGIN:VEVENT
 DESCRIPTION:Trash\, recycling\, and compost (sign-up only)
-DTSTART;VALUE=DATE:20171106
+DTSTART;VALUE=DATE:21001106
 SUMMARY:Trash\, recycling\, and compost (sign-up only)
 UID:2017-11-06-Denver-waste-@recollect.net
 END:VEVENT
 BEGIN:VEVENT
 DESCRIPTION:Trash and compost (sign-up only)
-DTSTART;VALUE=DATE:20171113
+DTSTART;VALUE=DATE:21001113
 SUMMARY:Trash and compost (sign-up only)
 UID:2017-11-13-Denver-waste-@recollect.net
 END:VEVENT
 BEGIN:VEVENT
 DESCRIPTION:Trash\, extra trash\, recycling\, and compost (sign-up only)
-DTSTART;VALUE=DATE:20171120
+DTSTART;VALUE=DATE:21001120
 SUMMARY:Trash\, extra trash\, recycling\, and compost (sign-up only)
 UID:2017-11-20-Denver-waste-@recollect.net
 END:VEVENT
 BEGIN:VEVENT
 DESCRIPTION:Trash and compost (sign-up only)
-DTSTART;VALUE=DATE:20171127
+DTSTART;VALUE=DATE:21001127
 SUMMARY:Trash and compost (sign-up only)
 UID:2017-11-27-Denver-waste-@recollect.net
 END:VEVENT
 BEGIN:VEVENT
 DESCRIPTION:Trash\, recycling\, and compost (sign-up only)
-DTSTART;VALUE=DATE:20171204
+DTSTART;VALUE=DATE:21001204
 SUMMARY:Trash\, recycling\, and compost (sign-up only)
 UID:2017-12-04-Denver-waste-@recollect.net
 END:VEVENT
 BEGIN:VEVENT
 DESCRIPTION:Trash and compost (sign-up only)
-DTSTART;VALUE=DATE:20171211
+DTSTART;VALUE=DATE:21001211
 SUMMARY:Trash and compost (sign-up only)
 UID:2017-12-11-Denver-waste-@recollect.net
 END:VEVENT
 BEGIN:VEVENT
 DESCRIPTION:Trash\, extra trash\, recycling\, and compost (sign-up only)
-DTSTART;VALUE=DATE:20171218
+DTSTART;VALUE=DATE:21001218
 SUMMARY:Trash\, extra trash\, recycling\, and compost (sign-up only)
 UID:2017-12-18-Denver-waste-@recollect.net
 END:VEVENT
 BEGIN:VEVENT
 DESCRIPTION:Trash and compost (sign-up only)
-DTSTART;VALUE=DATE:20171226
+DTSTART;VALUE=DATE:21001226
 SUMMARY:Trash and compost (sign-up only)
 UID:2017-12-26-Denver-waste-@recollect.net
 END:VEVENT

@@ -27,5 +27,6 @@ def test_bad_request(coordinates, geocode_response_404, geocode_url):
         mock.get(geocode_url, text=json.dumps(geocode_response_404))
 
         with pytest.raises(pyden.exceptions.GeocodingError) as exc_info:
-            pyden.TrashClient.from_coordinates(latitude, longitude)
+            pyden.TrashClient.from_coordinates(
+                latitude, longitude, cache=False)
             assert 'Unable to get an address for coordinates' in str(exc_info)

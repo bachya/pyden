@@ -6,11 +6,16 @@ Github: https://github.com/bachya/pyden
 """
 
 
-class GeocodingError(Exception):
+class GeocodingError(ValueError):
     """ Unable to geocode a set of coordinates """
     pass
 
 
 class HTTPError(Exception):
     """ Some sort of HTTP error occurred """
+    pass
+
+
+class TrashTypeError(ValueError):
+    """ Invalid trash type referenced """
     pass

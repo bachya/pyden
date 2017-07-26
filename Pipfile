@@ -3,18 +3,19 @@ url = "https://pypi.python.org/simple"
 verify_ssl = true
 
 [dev-packages]
+codecov = "*"
 coverage = "*"
+detox = "*"
+flake8 = "*"
 pytest = "*"
 pytest-cov = "*"
 requests-mock = "*"
-twine = "*"
-codecov = "*"
-tox = "*"
-flake8 = "*"
-detox = "*"
 Sphinx = "*"
+tox = "*"
+twine = "*"
 
 [packages]
-requests = "*"
-ics = "*"
 geocoder = "*"
+ics = "*"
+requests = "*"
+requests-cache = "*"
