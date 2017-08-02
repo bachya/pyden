@@ -94,11 +94,10 @@ class TrashClient(api.BaseAPI):
             try:
                 if pickups[pickup_type] is True:
                     return date
-
-                return None
             except KeyError:
                 raise exceptions.TrashTypeError(
-                    'Invalid pickup type: {}'.format(pickup_type)) from None
+                    'Could not find date for pickup type: {}'.format(
+                        pickup_type)) from None
 
     def schedule(self):
         """ Return the schedule from the current date forward """
