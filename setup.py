@@ -30,7 +30,7 @@ if sys.argv[-1] == "publish":
     os.system("python setup.py sdist bdist_wheel upload")
     sys.exit()
 
-REQUIRED = ['geocoder', 'ics', 'requests', 'requests-cache']
+REQUIRED = ['geocoder', 'icalendar', 'maya', 'requests', 'requests-cache']
 
 PACKAGES = ['pyden']
 

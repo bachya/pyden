@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "c51e162acb450a8f6a3ba082aa8c17fea3a0f4c91c5c50434e890b1cc0058ce5"
+            "sha256": "bd6d95c5417826cab77a2a863b4cb65301daf8f7fecfe44c372230ad31f6cddc"
         },
         "requires": {},
         "sources": [
@@ -12,11 +12,8 @@
         ]
     },
     "default": {
-        "arrow": {
-            "version": "==0.4.2"
-        },
         "certifi": {
-            "version": "==2017.4.17"
+            "version": "==2017.7.27.1"
         },
         "chardet": {
             "version": "==3.0.4"
@@ -24,23 +21,44 @@
         "click": {
             "version": "==6.7"
         },
+        "dateparser": {
+            "version": "==0.6.0"
+        },
         "decorator": {
             "version": "==4.1.2"
         },
         "geocoder": {
             "version": "==1.23.2"
         },
-        "ics": {
-            "version": "==0.3.1"
+        "humanize": {
+            "version": "==0.5.1"
+        },
+        "icalendar": {
+            "version": "==3.11.5"
         },
         "idna": {
             "version": "==2.5"
         },
+        "maya": {
+            "version": "==0.3.2"
+        },
+        "pendulum": {
+            "version": "==1.2.4"
+        },
         "python-dateutil": {
             "version": "==2.6.1"
         },
+        "pytz": {
+            "version": "==2017.2"
+        },
+        "pytzdata": {
+            "version": "==2017.2"
+        },
         "ratelim": {
             "version": "==0.1.6"
+        },
+        "regex": {
+            "version": "==2017.07.28"
         },
         "requests": {
             "version": "==2.18.2"
@@ -48,8 +66,14 @@
         "requests-cache": {
             "version": "==0.4.13"
         },
+        "ruamel.yaml": {
+            "version": "==0.15.23"
+        },
         "six": {
             "version": "==1.10.0"
+        },
+        "tzlocal": {
+            "version": "==1.4"
         },
         "urllib3": {
             "version": "==1.22"
@@ -63,7 +87,7 @@
             "version": "==2.4.0"
         },
         "certifi": {
-            "version": "==2017.4.17"
+            "version": "==2017.7.27.1"
         },
         "chardet": {
             "version": "==3.0.4"
@@ -87,7 +111,7 @@
             "version": "==0.21.0"
         },
         "flake8": {
-            "version": "==3.3.0"
+            "version": "==3.4.1"
         },
         "greenlet": {
             "version": "==0.4.12"
@@ -126,7 +150,7 @@
             "version": "==2.2.0"
         },
         "pytest": {
-            "version": "==3.1.3"
+            "version": "==3.2.0"
         },
         "pytest-cov": {
             "version": "==2.5.1"
@@ -144,7 +168,7 @@
             "version": "==0.8.0"
         },
         "setuptools": {
-            "version": "==36.2.4"
+            "version": "==36.2.7"
         },
         "six": {
             "version": "==1.10.0"

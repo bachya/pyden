@@ -7,8 +7,8 @@ Github: https://github.com/bachya
 
 from collections import OrderedDict
 
-import arrow
-import ics
+import icalendar
+import maya
 import requests_cache
 
 import pyden.api as api
@@ -16,6 +16,7 @@ import pyden.exceptions as exceptions
 import pyden.util as util
 
 BASE_URL = 'https://recollect.net/api'
+DEFAULT_TIMEZONE = 'America/Denver'
 LOOKUP_URL = 'lookup/{0},{1}.json?service={2}&address={3}&locale=en-US&' \
         'postal_code={4}&street_number={5}&street_name={6}&subpremise=&' \
         'locality={7}&territory={8}&country={9}'
@@ -58,7 +59,7 @@ class TrashClient(api.BaseAPI):
     @classmethod
     def from_coordinates(cls, latitude, longitude, **kwargs):
         """ Create a TrashClient based on a passed-in place_id """
-        from six.moves.urllib.parse import quote_plus
+        from urllib.parse import quote_plus
 
         klass = cls(None, **kwargs)
 
@@ -93,6 +94,8 @@ class TrashClient(api.BaseAPI):
             try:
                 if pickups[pickup_type] is True:
                     return date
+
+                return None
             except KeyError:
                 raise exceptions.TrashTypeError(
                     'Invalid pickup type: {}'.format(pickup_type)) from None
@@ -103,10 +106,13 @@ class TrashClient(api.BaseAPI):
 
         try:
             resp = self.get(SCHEDULE_URL.format(self.place_id, SERVICE_ID))
-            for event in ics.Calendar(resp.text).events:
-                if arrow.now().date() <= event.begin.date():
-                    event_title = event.name.lower()
-                    events[event.begin.format('YYYY-MM-DD')] = {
+            calendar = icalendar.Calendar.from_ical(resp.text)
+            for event in calendar.walk('vevent'):
+                raw_date = str(event.decoded('dtstart'))
+                event_date = maya.when(raw_date, timezone=DEFAULT_TIMEZONE)
+                if maya.now() <= event_date:
+                    event_title = event.get('summary')
+                    events[raw_date] = {
                         'compost': 'compost' in event_title,
                         'extra_trash': 'extra trash' in event_title,
                         'recycling': 'recycling' in event_title,
