@@ -110,7 +110,7 @@ class TrashClient(api.BaseAPI):
                 raw_date = str(event.decoded('dtstart'))
                 event_date = maya.when(raw_date, timezone=DEFAULT_TIMEZONE)
                 if maya.now() <= event_date:
-                    event_title = event.get('summary')
+                    event_title = event.get('summary').lower()
                     events[raw_date] = {
                         'compost': 'compost' in event_title,
                         'extra_trash': 'extra trash' in event_title,
