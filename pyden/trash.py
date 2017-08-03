@@ -9,7 +9,9 @@ from collections import OrderedDict
 
 import icalendar
 import maya
-import requests_cache
+from cachecontrol import CacheControl
+from cachecontrol.heuristics import ExpiresAfter
+from requests import Session
 
 import pyden.api as api
 import pyden.exceptions as exceptions
@@ -35,10 +37,12 @@ class TrashClient(api.BaseAPI):
                  **kwargs):
         """ Initialize! """
         if cache:
-            requests_cache.install_cache(
-                'trash_cache', backend='memory', expire_after=time_to_cache)
+            session = CacheControl(
+                Session(), heuristic=ExpiresAfter(seconds=time_to_cache))
+        else:
+            session = None
 
-        super(TrashClient, self).__init__(BASE_URL, **kwargs)
+        super(TrashClient, self).__init__(BASE_URL, session, **kwargs)
         self._place_id = place_id
 
     def __eq__(self, other):

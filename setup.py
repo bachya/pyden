@@ -30,7 +30,7 @@ if sys.argv[-1] == "publish":
     os.system("python setup.py sdist bdist_wheel upload")
     sys.exit()
 
-REQUIRED = ['geocoder', 'icalendar', 'maya', 'requests', 'requests-cache']
+REQUIRED = ['cachecontrol', 'geocoder', 'icalendar', 'maya', 'requests']
 
 PACKAGES = ['pyden']
 
@@ -50,8 +50,7 @@ setup(
     install_requires=REQUIRED,
     license='MIT',
     classifiers=(
-        'Development Status :: 4 - Beta',
-        'Intended Audience :: Developers',
+        'Development Status :: 4 - Beta', 'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Natural Language :: English', 'Programming Language :: Python',
         'Programming Language :: Python :: 3',

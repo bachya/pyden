@@ -15,8 +15,8 @@ twine = "*"
 Sphinx = "*"
 
 [packages]
+CacheControl = "*"
 geocoder = "*"
 icalendar = "*"
 maya = "*"
 requests = "*"
-requests-cache = "*"

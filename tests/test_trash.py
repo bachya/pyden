@@ -72,6 +72,21 @@ def test_schedule_successful(coordinates, geocode_response_200, geocode_url,
         assert client.schedule()
 
 
+def test_schedule_successful_cached(place_id, schedule_response_200,
+                                    schedule_url):
+    """
+    Tests that caching "works" (i.e., doesn't throw an error)
+    Currently, there doesn't appear to be a way to truly test
+    whether a mocked response is "from the cache" or not, so for
+    now, I'll settle for it not exploding.
+    """
+    with requests_mock.Mocker() as mock:
+        mock.get(schedule_url, text=schedule_response_200)
+
+        client = pyden.TrashClient.from_place_id(place_id)
+        assert client.schedule()
+
+
 def test_schedule_unsuccessful(geocode_response_200):
     """ Tests an unsuccessful schedule lookup """
     with requests_mock.Mocker() as mock:
