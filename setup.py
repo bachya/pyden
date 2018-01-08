@@ -1,55 +1,104 @@
-"""
-File: setup.py
-Author: Aaron Bach
-Email: bachya1208@gmail.com
-Github: https://github.com/bachya
-"""
-
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+# pylint: disable=exec-used,invalid-name,missing-docstring
+
+# Note: To use the 'upload' functionality of this file, you must:
+#   $ pip install twine
+
+import io
 import os
 import sys
-import codecs
+from shutil import rmtree
 
-from setuptools import setup
+from setuptools import find_packages, setup, Command
 
-try:
-    # Python 3
-    from os import dirname  # pylint: disable=ungrouped-imports
-except ImportError:
-    # Python 2
-    from os.path import dirname
+# Package meta-data.
+NAME = 'pyden'
+DESCRIPTION = 'A library to get for the City and County of Denver, CO'
+URL = 'https://github.com/bachya/pyden'
+EMAIL = 'bachya1208@gmail.com'
+AUTHOR = 'Aaron Bach'
 
-HERE = os.path.abspath(dirname(__file__))
-
-with codecs.open(os.path.join(HERE, 'README.rst'), encoding='utf-8') as f:
-    LONG_DESC = '\n' + f.read()
-
-if sys.argv[-1] == "publish":
-    os.system("python setup.py sdist bdist_wheel upload")
-    sys.exit()
-
+# What packages are required for this module to be executed?
 REQUIRED = ['cachecontrol', 'geocoder', 'icalendar', 'maya', 'requests']
 
-PACKAGES = ['pyden']
+# The rest you shouldn't have to touch too much :)
+# ------------------------------------------------
+# Except, perhaps the License and Trove Classifiers!
+# If you do change the License, remember to change the Trove Classifier for
+# that!
 
-ABOUT = dict()
-with open(os.path.join(HERE, 'pyden', '__version__.py'), 'r') as f:
-    exec(f.read(), ABOUT)  # pylint: disable=exec-used
+here = os.path.abspath(os.path.dirname(__file__))
 
+# Import the README and use it as the long-description.
+# Note: this will only work if 'README.rst' is present in your MANIFEST.in
+# file!
+with io.open(os.path.join(here, 'README.rst'), encoding='utf-8') as f:
+    long_description = '\n' + f.read()
+
+# Load the package's __version__.py module as a dictionary.
+about = {}
+with open(os.path.join(here, NAME, '__version__.py')) as f:
+    exec(f.read(), about)
+
+
+class UploadCommand(Command):
+    """Support setup.py upload."""
+
+    description = 'Build and publish the package.'
+    user_options = []
+
+    @staticmethod
+    def status(s):
+        """Prints things in bold."""
+        print('\033[1m{0}\033[0m'.format(s))
+
+    def initialize_options(self):
+        pass
+
+    def finalize_options(self):
+        pass
+
+    def run(self):
+        try:
+            self.status('Removing previous builds…')
+            rmtree(os.path.join(here, 'dist'))
+        except OSError:
+            pass
+
+        self.status('Building Source and Wheel (universal) distribution…')
+        os.system('{0} setup.py sdist bdist_wheel --universal'.format(
+            sys.executable))
+
+        self.status('Uploading the package to PyPi via Twine…')
+        os.system('twine upload dist/*')
+
+        sys.exit()
+
+
+# Where the magic happens:
 setup(
-    name='pyden',
-    version=ABOUT['__version__'],
-    description='A library to get for the City and County of Denver, CO',
-    long_description=LONG_DESC,
-    author='Aaron Bach',
-    author_email='bachya1208@gmail.com',
-    url='https://github.com/bachya/pyden',
-    packages=PACKAGES,
+    name=NAME,
+    version=about['__version__'],
+    description=DESCRIPTION,
+    long_description=long_description,
+    author=AUTHOR,
+    author_email=EMAIL,
+    url=URL,
+    packages=find_packages(exclude=('tests', )),
+    # If your package is a single module, use this instead of 'packages':
+    # py_modules=['mypackage'],
+
+    # entry_points={
+    #     'console_scripts': ['mycli=mymodule:cli'],
+    # },
     install_requires=REQUIRED,
+    include_package_data=True,
     license='MIT',
-    classifiers=(
+    classifiers=[
+        # Trove classifiers
+        # Full list: https://pypi.python.org/pypi?%3Aaction=list_classifiers
         'Development Status :: 4 - Beta', 'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Natural Language :: English', 'Programming Language :: Python',
@@ -61,4 +110,9 @@ setup(
         'Programming Language :: Python :: Implementation',
         'Programming Language :: Python :: Implementation :: CPython',
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
-        'Topic :: Software Development :: Libraries :: Python Modules'), )
+        'Topic :: Software Development :: Libraries :: Python Modules'
+    ],
+    # $ setup.py publish support.
+    cmdclass={
+        'upload': UploadCommand,
+    }, )
