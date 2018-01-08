@@ -118,7 +118,7 @@ class TrashClient(api.BaseAPI):
                     events[raw_date] = {
                         'compost': 'compost' in event_title,
                         'extra_trash': 'extra trash' in event_title,
-                        'recycling': 'recycling' in event_title,
+                        'recycling': 'recycl' in event_title,
                         'trash': 'trash' in event_title
                     }
 
