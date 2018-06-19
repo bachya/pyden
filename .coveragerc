@@ -1,0 +1,6 @@
+[run]
+source = pyden
+
+omit =
+    pyden/__version__.py
+

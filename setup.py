@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# pylint: disable=exec-used,invalid-name,missing-docstring
+"""Define publication options."""
 
 # Note: To use the 'upload' functionality of this file, you must:
 #   $ pip install twine
@@ -14,14 +14,19 @@ from shutil import rmtree
 from setuptools import find_packages, setup, Command
 
 # Package meta-data.
-NAME = 'pyden'
-DESCRIPTION = 'A library to get for the City and County of Denver, CO'
-URL = 'https://github.com/bachya/pyden'
+NAME = 'pypollencom'
+DESCRIPTION = 'A simple API for Pollen.com data'
+URL = 'https://github.com/bachya/pypollencom'
 EMAIL = 'bachya1208@gmail.com'
 AUTHOR = 'Aaron Bach'
+REQUIRES_PYTHON = '>=3.5.0'
+VERSION = None
 
 # What packages are required for this module to be executed?
-REQUIRED = ['cachecontrol', 'geocoder', 'icalendar', 'maya', 'requests']
+REQUIRED = [  # type: ignore
+    'aiodns',
+    'aiohttp'
+]
 
 # The rest you shouldn't have to touch too much :)
 # ------------------------------------------------
@@ -29,41 +34,46 @@ REQUIRED = ['cachecontrol', 'geocoder', 'icalendar', 'maya', 'requests']
 # If you do change the License, remember to change the Trove Classifier for
 # that!
 
-here = os.path.abspath(os.path.dirname(__file__))
+HERE = os.path.abspath(os.path.dirname(__file__))
 
 # Import the README and use it as the long-description.
-# Note: this will only work if 'README.rst' is present in your MANIFEST.in
-# file!
-with io.open(os.path.join(here, 'README.rst'), encoding='utf-8') as f:
-    long_description = '\n' + f.read()
+# Note: this will only work if 'README.md' is present in your MANIFEST.in file!
+with io.open(os.path.join(HERE, 'README.rst'), encoding='utf-8') as f:
+    LONG_DESC = '\n' + f.read()
 
 # Load the package's __version__.py module as a dictionary.
-about = {}
-with open(os.path.join(here, NAME, '__version__.py')) as f:
-    exec(f.read(), about)
+ABOUT = {}  # type: ignore
+if not VERSION:
+    with open(os.path.join(HERE, NAME, '__version__.py')) as f:
+        exec(f.read(), ABOUT)  # pylint: disable=exec-used
+else:
+    ABOUT['__version__'] = VERSION
 
 
 class UploadCommand(Command):
     """Support setup.py upload."""
 
     description = 'Build and publish the package.'
-    user_options = []
+    user_options = []  # type: ignore
 
     @staticmethod
-    def status(s):
+    def status(string):
         """Prints things in bold."""
-        print('\033[1m{0}\033[0m'.format(s))
+        print('\033[1m{0}\033[0m'.format(string))
 
     def initialize_options(self):
+        """Add options for initialization."""
         pass
 
     def finalize_options(self):
+        """Add options for finalization."""
         pass
 
     def run(self):
+        """Run."""
         try:
             self.status('Removing previous builds…')
-            rmtree(os.path.join(here, 'dist'))
+            rmtree(os.path.join(HERE, 'dist'))
         except OSError:
             pass
 
@@ -74,19 +84,25 @@ class UploadCommand(Command):
         self.status('Uploading the package to PyPi via Twine…')
         os.system('twine upload dist/*')
 
+        self.status('Pushing git tags…')
+        os.system('git tag v{0}'.format(ABOUT['__version__']))
+        os.system('git push --tags')
+
         sys.exit()
 
 
 # Where the magic happens:
 setup(
     name=NAME,
-    version=about['__version__'],
+    version=ABOUT['__version__'],
     description=DESCRIPTION,
-    long_description=long_description,
+    long_description=LONG_DESC,
+    long_description_content_type='text/markdown',
     author=AUTHOR,
     author_email=EMAIL,
+    python_requires=REQUIRES_PYTHON,
     url=URL,
-    packages=find_packages(exclude=('tests', )),
+    packages=find_packages(exclude=('tests',)),
     # If your package is a single module, use this instead of 'packages':
     # py_modules=['mypackage'],
 
@@ -99,20 +115,16 @@ setup(
     classifiers=[
         # Trove classifiers
         # Full list: https://pypi.python.org/pypi?%3Aaction=list_classifiers
-        'Development Status :: 4 - Beta', 'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
-        'Natural Language :: English', 'Programming Language :: Python',
+        'Programming Language :: Python',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.3',
-        'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
-        'Programming Language :: Python :: Implementation',
         'Programming Language :: Python :: Implementation :: CPython',
-        'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
-        'Topic :: Software Development :: Libraries :: Python Modules'
+        'Programming Language :: Python :: Implementation :: PyPy'
     ],
     # $ setup.py publish support.
     cmdclass={
         'upload': UploadCommand,
-    }, )
+    },
+)
