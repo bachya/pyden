@@ -19,9 +19,12 @@ sphinx = "*"
 tox = "*"
 twine = "*"
 
+
 [packages]
 
 aiocache = "*"
 aiodns = "*"
 aiohttp = "*"
+geocoder = "*"
 ics = "*"
+pytz = "*"

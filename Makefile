@@ -1,7 +1,7 @@
 ci:
 	pipenv run py.test --junitxml=report.xml
 coverage:
-	pipenv run py.test --verbose --cov-report term-missing --cov-report xml --cov=pyden tests
+	pipenv run py.test -s --verbose --cov-report term-missing --cov-report xml --cov=pyden tests
 docs:
 	cd docs && make html
 init:

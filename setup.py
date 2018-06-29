@@ -14,18 +14,22 @@ from shutil import rmtree
 from setuptools import find_packages, setup, Command
 
 # Package meta-data.
-NAME = 'pypollencom'
-DESCRIPTION = 'A simple API for Pollen.com data'
-URL = 'https://github.com/bachya/pypollencom'
+NAME = 'pyden'
+DESCRIPTION = 'A Python API for info from the City and County of Denver, CO'
+URL = 'https://github.com/bachya/pyden'
 EMAIL = 'bachya1208@gmail.com'
 AUTHOR = 'Aaron Bach'
 REQUIRES_PYTHON = '>=3.5.0'
 VERSION = None
 
 # What packages are required for this module to be executed?
-REQUIRED = [  # type: ignore
+REQUIRED = [
+    'aiocache',
     'aiodns',
-    'aiohttp'
+    'aiohttp',
+    'geocoder',
+    'ics',
+    'pytz'
 ]
 
 # The rest you shouldn't have to touch too much :)
