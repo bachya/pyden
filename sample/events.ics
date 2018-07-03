@@ -1,0 +1,359 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+METHOD:PUBLISH
+PRODID:Data::ICal 0.22
+X-PUBLISHED-TTL:1440
+X-WR-CALDESC:Solid Waste
+X-WR-CALNAME:8673 E 55th Ave\, Denver
+X-WR-TIMEZONE:America/Denver
+BEGIN:VEVENT
+DESCRIPTION:Trash and compost (sign-up only) - Paint Drop-Off Event for Hou
+ seholds and Businesses on Saturday\, June 23\, 2018 from 8 AM to 3 PM a t 
+ Dick’s Sporting Goods Park. For event details and to select your expected 
+ arrival time\, visit https://www.paintcare.org/commercecity/. This event i
+ s open to all Colorado residents.
+DTSTART;VALUE=DATE:20180529
+SUMMARY:Trash and compost (sign-up only)
+UID:2018-05-29-Denver-waste-@recollect.net
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Trash\, extra trash\, recycle\, and compost (sign-up only) - Pa
+ int Drop-Off Event for Households and Businesses on Saturday\, June 23\, 2
+ 018 from 8 AM to 3 PM a t Dick’s Sporting Goods Park. For event details an
+ d to select your expected arrival time\, visit https://www.paintcare.org/c
+ ommercecity/. This event is open to all Colorado residents.
+DTSTART;VALUE=DATE:20180604
+SUMMARY:Trash\, extra trash\, recycle\, and compost (sign-up only)
+UID:2018-06-04-Denver-waste-@recollect.net
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Trash and compost (sign-up only) - Paint Drop-Off Event for Hou
+ seholds and Businesses on Saturday\, June 23\, 2018 from 8 AM to 3 PM a t 
+ Dick’s Sporting Goods Park. For event details and to select your expected 
+ arrival time\, visit https://www.paintcare.org/commercecity/. This event i
+ s open to all Colorado residents.
+DTSTART;VALUE=DATE:20180611
+SUMMARY:Trash and compost (sign-up only)
+UID:2018-06-11-Denver-waste-@recollect.net
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Trash\, recycle\, and compost (sign-up only) - Paint Drop-Off E
+ vent for Households and Businesses on Saturday\, June 23\, 2018 from 8 AM 
+ to 3 PM a t Dick’s Sporting Goods Park. For event details and to select yo
+ ur expected arrival time\, visit https://www.paintcare.org/commercecity/. 
+ This event is open to all Colorado residents.
+DTSTART;VALUE=DATE:20180618
+SUMMARY:Trash\, recycle\, and compost (sign-up only)
+UID:2018-06-18-Denver-waste-@recollect.net
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Trash and compost (sign-up only) - Paint Drop-Off Event for Hou
+ seholds and Businesses on Saturday\, June 23\, 2018 from 8 AM to 3 PM a t 
+ Dick’s Sporting Goods Park. For event details and to select your expected 
+ arrival time\, visit https://www.paintcare.org/commercecity/. This event i
+ s open to all Colorado residents.
+DTSTART;VALUE=DATE:20180625
+SUMMARY:Trash and compost (sign-up only)
+UID:2018-06-25-Denver-waste-@recollect.net
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Trash\, extra trash\, recycle\, and compost (sign-up only) - Pa
+ int Drop-Off Event for Households and Businesses on Saturday\, June 23\, 2
+ 018 from 8 AM to 3 PM a t Dick’s Sporting Goods Park. For event details an
+ d to select your expected arrival time\, visit https://www.paintcare.org/c
+ ommercecity/. This event is open to all Colorado residents.
+DTSTART;VALUE=DATE:20180702
+SUMMARY:Trash\, extra trash\, recycle\, and compost (sign-up only)
+UID:2018-07-02-Denver-waste-@recollect.net
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Trash and compost (sign-up only) - Paint Drop-Off Event for Hou
+ seholds and Businesses on Saturday\, June 23\, 2018 from 8 AM to 3 PM a t 
+ Dick’s Sporting Goods Park. For event details and to select your expected 
+ arrival time\, visit https://www.paintcare.org/commercecity/. This event i
+ s open to all Colorado residents.
+DTSTART;VALUE=DATE:20180709
+SUMMARY:Trash and compost (sign-up only)
+UID:2018-07-09-Denver-waste-@recollect.net
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Trash\, recycle\, and compost (sign-up only) - Paint Drop-Off E
+ vent for Households and Businesses on Saturday\, June 23\, 2018 from 8 AM 
+ to 3 PM a t Dick’s Sporting Goods Park. For event details and to select yo
+ ur expected arrival time\, visit https://www.paintcare.org/commercecity/. 
+ This event is open to all Colorado residents.
+DTSTART;VALUE=DATE:20180716
+SUMMARY:Trash\, recycle\, and compost (sign-up only)
+UID:2018-07-16-Denver-waste-@recollect.net
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Trash and compost (sign-up only) - Paint Drop-Off Event for Hou
+ seholds and Businesses on Saturday\, June 23\, 2018 from 8 AM to 3 PM a t 
+ Dick’s Sporting Goods Park. For event details and to select your expected 
+ arrival time\, visit https://www.paintcare.org/commercecity/. This event i
+ s open to all Colorado residents.
+DTSTART;VALUE=DATE:20180723
+SUMMARY:Trash and compost (sign-up only)
+UID:2018-07-23-Denver-waste-@recollect.net
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Trash\, extra trash\, recycle\, and compost (sign-up only) - Pa
+ int Drop-Off Event for Households and Businesses on Saturday\, June 23\, 2
+ 018 from 8 AM to 3 PM a t Dick’s Sporting Goods Park. For event details an
+ d to select your expected arrival time\, visit https://www.paintcare.org/c
+ ommercecity/. This event is open to all Colorado residents.
+DTSTART;VALUE=DATE:20180730
+SUMMARY:Trash\, extra trash\, recycle\, and compost (sign-up only)
+UID:2018-07-30-Denver-waste-@recollect.net
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Trash and compost (sign-up only) - Paint Drop-Off Event for Hou
+ seholds and Businesses on Saturday\, June 23\, 2018 from 8 AM to 3 PM a t 
+ Dick’s Sporting Goods Park. For event details and to select your expected 
+ arrival time\, visit https://www.paintcare.org/commercecity/. This event i
+ s open to all Colorado residents.
+DTSTART;VALUE=DATE:20180806
+SUMMARY:Trash and compost (sign-up only)
+UID:2018-08-06-Denver-waste-@recollect.net
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Trash\, recycle\, and compost (sign-up only) - Paint Drop-Off E
+ vent for Households and Businesses on Saturday\, June 23\, 2018 from 8 AM 
+ to 3 PM a t Dick’s Sporting Goods Park. For event details and to select yo
+ ur expected arrival time\, visit https://www.paintcare.org/commercecity/. 
+ This event is open to all Colorado residents.
+DTSTART;VALUE=DATE:20180813
+SUMMARY:Trash\, recycle\, and compost (sign-up only)
+UID:2018-08-13-Denver-waste-@recollect.net
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Trash and compost (sign-up only) - Paint Drop-Off Event for Hou
+ seholds and Businesses on Saturday\, June 23\, 2018 from 8 AM to 3 PM a t 
+ Dick’s Sporting Goods Park. For event details and to select your expected 
+ arrival time\, visit https://www.paintcare.org/commercecity/. This event i
+ s open to all Colorado residents.
+DTSTART;VALUE=DATE:20180820
+SUMMARY:Trash and compost (sign-up only)
+UID:2018-08-20-Denver-waste-@recollect.net
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Trash\, extra trash\, recycle\, and compost (sign-up only) - Pa
+ int Drop-Off Event for Households and Businesses on Saturday\, June 23\, 2
+ 018 from 8 AM to 3 PM a t Dick’s Sporting Goods Park. For event details an
+ d to select your expected arrival time\, visit https://www.paintcare.org/c
+ ommercecity/. This event is open to all Colorado residents.
+DTSTART;VALUE=DATE:20180827
+SUMMARY:Trash\, extra trash\, recycle\, and compost (sign-up only)
+UID:2018-08-27-Denver-waste-@recollect.net
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Trash and compost (sign-up only) - Paint Drop-Off Event for Hou
+ seholds and Businesses on Saturday\, June 23\, 2018 from 8 AM to 3 PM a t 
+ Dick’s Sporting Goods Park. For event details and to select your expected 
+ arrival time\, visit https://www.paintcare.org/commercecity/. This event i
+ s open to all Colorado residents.
+DTSTART;VALUE=DATE:20180904
+SUMMARY:Trash and compost (sign-up only)
+UID:2018-09-04-Denver-waste-@recollect.net
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Trash\, recycle\, and compost (sign-up only) - Paint Drop-Off E
+ vent for Households and Businesses on Saturday\, June 23\, 2018 from 8 AM 
+ to 3 PM a t Dick’s Sporting Goods Park. For event details and to select yo
+ ur expected arrival time\, visit https://www.paintcare.org/commercecity/. 
+ This event is open to all Colorado residents.
+DTSTART;VALUE=DATE:20180910
+SUMMARY:Trash\, recycle\, and compost (sign-up only)
+UID:2018-09-10-Denver-waste-@recollect.net
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Trash and compost (sign-up only) - Paint Drop-Off Event for Hou
+ seholds and Businesses on Saturday\, June 23\, 2018 from 8 AM to 3 PM a t 
+ Dick’s Sporting Goods Park. For event details and to select your expected 
+ arrival time\, visit https://www.paintcare.org/commercecity/. This event i
+ s open to all Colorado residents.
+DTSTART;VALUE=DATE:20180917
+SUMMARY:Trash and compost (sign-up only)
+UID:2018-09-17-Denver-waste-@recollect.net
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Trash\, extra trash\, recycle\, and compost (sign-up only) - Pa
+ int Drop-Off Event for Households and Businesses on Saturday\, June 23\, 2
+ 018 from 8 AM to 3 PM a t Dick’s Sporting Goods Park. For event details an
+ d to select your expected arrival time\, visit https://www.paintcare.org/c
+ ommercecity/. This event is open to all Colorado residents.
+DTSTART;VALUE=DATE:20180924
+SUMMARY:Trash\, extra trash\, recycle\, and compost (sign-up only)
+UID:2018-09-24-Denver-waste-@recollect.net
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Trash and compost (sign-up only) - Paint Drop-Off Event for Hou
+ seholds and Businesses on Saturday\, June 23\, 2018 from 8 AM to 3 PM a t 
+ Dick’s Sporting Goods Park. For event details and to select your expected 
+ arrival time\, visit https://www.paintcare.org/commercecity/. This event i
+ s open to all Colorado residents.
+DTSTART;VALUE=DATE:20181001
+SUMMARY:Trash and compost (sign-up only)
+UID:2018-10-01-Denver-waste-@recollect.net
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Trash\, recycle\, and compost (sign-up only) - Paint Drop-Off E
+ vent for Households and Businesses on Saturday\, June 23\, 2018 from 8 AM 
+ to 3 PM a t Dick’s Sporting Goods Park. For event details and to select yo
+ ur expected arrival time\, visit https://www.paintcare.org/commercecity/. 
+ This event is open to all Colorado residents.
+DTSTART;VALUE=DATE:20181008
+SUMMARY:Trash\, recycle\, and compost (sign-up only)
+UID:2018-10-08-Denver-waste-@recollect.net
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Trash and compost (sign-up only) - Paint Drop-Off Event for Hou
+ seholds and Businesses on Saturday\, June 23\, 2018 from 8 AM to 3 PM a t 
+ Dick’s Sporting Goods Park. For event details and to select your expected 
+ arrival time\, visit https://www.paintcare.org/commercecity/. This event i
+ s open to all Colorado residents.
+DTSTART;VALUE=DATE:20181015
+SUMMARY:Trash and compost (sign-up only)
+UID:2018-10-15-Denver-waste-@recollect.net
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Trash\, extra trash\, recycle\, and compost (sign-up only) - Pa
+ int Drop-Off Event for Households and Businesses on Saturday\, June 23\, 2
+ 018 from 8 AM to 3 PM a t Dick’s Sporting Goods Park. For event details an
+ d to select your expected arrival time\, visit https://www.paintcare.org/c
+ ommercecity/. This event is open to all Colorado residents.
+DTSTART;VALUE=DATE:20181022
+SUMMARY:Trash\, extra trash\, recycle\, and compost (sign-up only)
+UID:2018-10-22-Denver-waste-@recollect.net
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Trash and compost (sign-up only) - Paint Drop-Off Event for Hou
+ seholds and Businesses on Saturday\, June 23\, 2018 from 8 AM to 3 PM a t 
+ Dick’s Sporting Goods Park. For event details and to select your expected 
+ arrival time\, visit https://www.paintcare.org/commercecity/. This event i
+ s open to all Colorado residents.
+DTSTART;VALUE=DATE:20181029
+SUMMARY:Trash and compost (sign-up only)
+UID:2018-10-29-Denver-waste-@recollect.net
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Trash\, recycle\, and compost (sign-up only) - Paint Drop-Off E
+ vent for Households and Businesses on Saturday\, June 23\, 2018 from 8 AM 
+ to 3 PM a t Dick’s Sporting Goods Park. For event details and to select yo
+ ur expected arrival time\, visit https://www.paintcare.org/commercecity/. 
+ This event is open to all Colorado residents.
+DTSTART;VALUE=DATE:20181105
+SUMMARY:Trash\, recycle\, and compost (sign-up only)
+UID:2018-11-05-Denver-waste-@recollect.net
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Trash and compost (sign-up only) - Paint Drop-Off Event for Hou
+ seholds and Businesses on Saturday\, June 23\, 2018 from 8 AM to 3 PM a t 
+ Dick’s Sporting Goods Park. For event details and to select your expected 
+ arrival time\, visit https://www.paintcare.org/commercecity/. This event i
+ s open to all Colorado residents.
+DTSTART;VALUE=DATE:20181112
+SUMMARY:Trash and compost (sign-up only)
+UID:2018-11-12-Denver-waste-@recollect.net
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Trash\, extra trash\, recycle\, and compost (sign-up only) - Pa
+ int Drop-Off Event for Households and Businesses on Saturday\, June 23\, 2
+ 018 from 8 AM to 3 PM a t Dick’s Sporting Goods Park. For event details an
+ d to select your expected arrival time\, visit https://www.paintcare.org/c
+ ommercecity/. This event is open to all Colorado residents.
+DTSTART;VALUE=DATE:20181119
+SUMMARY:Trash\, extra trash\, recycle\, and compost (sign-up only)
+UID:2018-11-19-Denver-waste-@recollect.net
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Trash and compost (sign-up only) - Paint Drop-Off Event for Hou
+ seholds and Businesses on Saturday\, June 23\, 2018 from 8 AM to 3 PM a t 
+ Dick’s Sporting Goods Park. For event details and to select your expected 
+ arrival time\, visit https://www.paintcare.org/commercecity/. This event i
+ s open to all Colorado residents.
+DTSTART;VALUE=DATE:20181126
+SUMMARY:Trash and compost (sign-up only)
+UID:2018-11-26-Denver-waste-@recollect.net
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Trash\, recycle\, and compost (sign-up only) - Paint Drop-Off E
+ vent for Households and Businesses on Saturday\, June 23\, 2018 from 8 AM 
+ to 3 PM a t Dick’s Sporting Goods Park. For event details and to select yo
+ ur expected arrival time\, visit https://www.paintcare.org/commercecity/. 
+ This event is open to all Colorado residents.
+DTSTART;VALUE=DATE:20181203
+SUMMARY:Trash\, recycle\, and compost (sign-up only)
+UID:2018-12-03-Denver-waste-@recollect.net
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Trash and compost (sign-up only) - Paint Drop-Off Event for Hou
+ seholds and Businesses on Saturday\, June 23\, 2018 from 8 AM to 3 PM a t 
+ Dick’s Sporting Goods Park. For event details and to select your expected 
+ arrival time\, visit https://www.paintcare.org/commercecity/. This event i
+ s open to all Colorado residents.
+DTSTART;VALUE=DATE:20181210
+SUMMARY:Trash and compost (sign-up only)
+UID:2018-12-10-Denver-waste-@recollect.net
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Trash\, extra trash\, recycle\, and compost (sign-up only) - Pa
+ int Drop-Off Event for Households and Businesses on Saturday\, June 23\, 2
+ 018 from 8 AM to 3 PM a t Dick’s Sporting Goods Park. For event details an
+ d to select your expected arrival time\, visit https://www.paintcare.org/c
+ ommercecity/. This event is open to all Colorado residents.
+DTSTART;VALUE=DATE:20181217
+SUMMARY:Trash\, extra trash\, recycle\, and compost (sign-up only)
+UID:2018-12-17-Denver-waste-@recollect.net
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Trash and compost (sign-up only) - Paint Drop-Off Event for Hou
+ seholds and Businesses on Saturday\, June 23\, 2018 from 8 AM to 3 PM a t 
+ Dick’s Sporting Goods Park. For event details and to select your expected 
+ arrival time\, visit https://www.paintcare.org/commercecity/. This event i
+ s open to all Colorado residents.
+DTSTART;VALUE=DATE:20181224
+SUMMARY:Trash and compost (sign-up only)
+UID:2018-12-24-Denver-waste-@recollect.net
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Trash\, recycle\, and compost (sign-up only) - Paint Drop-Off E
+ vent for Households and Businesses on Saturday\, June 23\, 2018 from 8 AM 
+ to 3 PM a t Dick’s Sporting Goods Park. For event details and to select yo
+ ur expected arrival time\, visit https://www.paintcare.org/commercecity/. 
+ This event is open to all Colorado residents.
+DTSTART;VALUE=DATE:20181231
+SUMMARY:Trash\, recycle\, and compost (sign-up only)
+UID:2018-12-31-Denver-waste-@recollect.net
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Recycle - Paint Drop-Off Event for Households and Businesses on
+  Saturday\, June 23\, 2018 from 8 AM to 3 PM a t Dick’s Sporting Goods Par
+ k. For event details and to select your expected arrival time\, visit http
+ s://www.paintcare.org/commercecity/. This event is open to all Colorado re
+ sidents.
+DTSTART;VALUE=DATE:20190114
+SUMMARY:Recycle
+UID:2019-01-14-Denver-waste-@recollect.net
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Recycle - Paint Drop-Off Event for Households and Businesses on
+  Saturday\, June 23\, 2018 from 8 AM to 3 PM a t Dick’s Sporting Goods Par
+ k. For event details and to select your expected arrival time\, visit http
+ s://www.paintcare.org/commercecity/. This event is open to all Colorado re
+ sidents.
+DTSTART;VALUE=DATE:20190128
+SUMMARY:Recycle
+UID:2019-01-28-Denver-waste-@recollect.net
+END:VEVENT
+BEGIN:VEVENT
+DESCRIPTION:Recycle - Paint Drop-Off Event for Households and Businesses on
+  Saturday\, June 23\, 2018 from 8 AM to 3 PM a t Dick’s Sporting Goods Par
+ k. For event details and to select your expected arrival time\, visit http
+ s://www.paintcare.org/commercecity/. This event is open to all Colorado re
+ sidents.
+DTSTART;VALUE=DATE:20190211
+SUMMARY:Recycle
+UID:2019-02-11-Denver-waste-@recollect.net
+END:VEVENT
+END:VCALENDAR

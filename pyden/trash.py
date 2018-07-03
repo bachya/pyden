@@ -1,128 +1,125 @@
-"""
-File: trash.py
-Author: Aaron Bach
-Email: bachya1208@gmail.com
-Github: https://github.com/bachya
-"""
-
+"""Define an object to deal with trash/recycling data."""
+import asyncio
 from collections import OrderedDict
+from datetime import datetime
+from enum import Enum
+from typing import Awaitable, Callable, Dict
+from urllib.parse import quote_plus
 
-import icalendar
-import maya
-from cachecontrol import CacheControl
-from cachecontrol.heuristics import ExpiresAfter
-from requests import Session
+from aiocache import cached
 
-import pyden.api as api
-import pyden.exceptions as exceptions
-import pyden.util as util
+import geocoder
+import pytz as tz
+from ics import Calendar
+from geocoder.google_reverse import GoogleReverse
 
-BASE_URL = 'https://recollect.net/api'
-DEFAULT_TIMEZONE = 'America/Denver'
-LOOKUP_URL = 'lookup/{0},{1}.json?service={2}&address={3}&locale=en-US&' \
-        'postal_code={4}&street_number={5}&street_name={6}&subpremise=&' \
-        'locality={7}&territory={8}&country={9}'
-SCHEDULE_CACHE_TIMING = 60 * 60 * 24 * 7 * 4 * 1
-SCHEDULE_URL = 'places/{0}/services/{1}/events.en-US.ics'
-SERVICE_ID = 248
+from .errors import PydenError
+
+CALENDAR_URL = 'https://recollect.a.ssl.fastly.net/api/places/{0}/services/' \
+    '{1}/events.en-US.ics'
+PLACE_LOOKUP_URL = 'https://recollect.net/api/lookup/{0},{1}.json?' \
+    'service={2}&address={3}&locale={4}&postal_code={5}&' \
+    'street_number={6}&street_name={7}&subpremise=&locality={8}&' \
+    'territory={9}&country={10}'
+
+DEFAULT_CACHE_SECONDS = 60 * 60 * 24 * 7 * 4 * 1
+DEFAULT_LOCALE = 'en-US'
+DEFAULT_SERVICE_ID = 248
+DEFAULT_TIMEZONE = tz.timezone('America/Denver')
 
 
-class TrashClient(api.BaseAPI):
-    """ A class to handle requesting trash/recycling info """
+def raise_on_invalid_place(func: Callable) -> Callable:
+    """Raise an exception when a place ID hasn't been set."""
 
-    def __init__(self,
-                 place_id,
-                 cache=True,
-                 time_to_cache=SCHEDULE_CACHE_TIMING,
-                 **kwargs):
-        """ Initialize! """
-        if cache:
-            session = CacheControl(
-                Session(), heuristic=ExpiresAfter(seconds=time_to_cache))
-        else:
-            session = None
+    async def decorator(self, *args: list, **kwargs: dict) -> Awaitable:
+        """Decorate."""
+        if not self.place_id:
+            raise PydenError('No Recollect place ID given')
+        return await func(self, *args, **kwargs)
 
-        super(TrashClient, self).__init__(BASE_URL, session, **kwargs)
-        self._place_id = place_id
+    return decorator
 
-    def __eq__(self, other):
-        """ Defines how this object should be compared to others """
-        return self.__dict__ == other.__dict__
 
-    @property
-    def place_id(self):
-        """ Recollect place ID getter """
+class Trash(object):
+    """Define the client."""
 
-        return self._place_id
+    class PickupTypes(Enum):
+        """Define an enum for presence states."""
+        compost = 'Compost'
+        extra_trash = 'Extra Trash'
+        recycling = 'Recycling'
+        trash = 'Trash'
 
-    @place_id.setter
-    def place_id(self, value):
-        """ Recollect place ID setter """
-        self._place_id = value
+    def __init__(
+            self, request: Callable[..., Awaitable[dict]],
+            loop: asyncio.AbstractEventLoop) -> None:
+        """Initialize."""
+        self._loop = loop
+        self._request = request
+        self.place_id = None
 
-    @classmethod
-    def from_coordinates(cls, latitude, longitude, **kwargs):
-        """ Create a TrashClient based on a passed-in place_id """
-        from urllib.parse import quote_plus
+    @staticmethod
+    def _get_geo_data(
+            latitude: float, longitude: float,
+            google_api_key: str) -> GoogleReverse:
+        """Return geo data from a set of coordinates."""
+        return geocoder.google([latitude, longitude],
+                               key=google_api_key,
+                               method='reverse')
 
-        klass = cls(None, **kwargs)
+    async def init_from_coords(
+            self, latitude: float, longitude: float,
+            google_api_key: str) -> None:
+        """Initialize the client from a set of coordinates."""
+        geo = await self._loop.run_in_executor(
+            None, self._get_geo_data, latitude, longitude, google_api_key)
+        lookup = await self._request(
+            'get',
+            PLACE_LOOKUP_URL.format(
+                latitude, longitude, DEFAULT_SERVICE_ID,
+                quote_plus(
+                    '{0} {1}, {2}, {3}, {4}'.format(
+                        geo.housenumber, geo.street_long, geo.city,
+                        geo.state_long, geo.country_long)),
+                DEFAULT_LOCALE, geo.postal, geo.housenumber,
+                quote_plus(geo.street_long), quote_plus(geo.city),
+                quote_plus(geo.state_long), quote_plus(geo.country_long)))
 
-        coder = util.get_coder_from_coords(latitude, longitude)
-        address = '{0} {1}, {2}, {3} {4} {5}'.format(
-            coder.housenumber, coder.street_long, coder.city, coder.state,
-            coder.postal, coder.country)
-        encoded_address = quote_plus(address)
-
-        resp = klass.get(
-            LOOKUP_URL.format(latitude, longitude, SERVICE_ID, encoded_address,
-                              coder.postal, coder.housenumber,
-                              coder.street_long, coder.city, coder.state,
-                              coder.country))
         try:
-            klass.place_id = resp.json()['place']['id']
-            return klass
-        except KeyError:
-            raise exceptions.GeocodingError(
-                'Unable to get a valid schedule for address: {0}'.format(
-                    address))
+            self.place_id = lookup['place']['id']
+        except (KeyError, TypeError):
+            raise PydenError('Unable to find Recollect place ID')
 
-    @classmethod
-    def from_place_id(cls, place_id, **kwargs):
-        """ Create a TrashClient based on a passed-in place_id """
-        return cls(place_id, **kwargs)
-
-    def next_pickup(self, pickup_type):
-        """ Figures out the next pickup date for a particular type """
-        schedule = self.schedule()
+    @raise_on_invalid_place
+    async def next_pickup(self, pickup_type: Enum) -> datetime:
+        """Figure out the next pickup date for a particular type."""
+        schedule = await self.upcoming_schedule()
         for date, pickups in schedule.items():
-            try:
-                if pickups[pickup_type] is True:
-                    return date
-            except KeyError:
-                raise exceptions.TrashTypeError(
-                    'Could not find date for pickup type: {}'.format(
-                        pickup_type)) from None
+            if pickups[pickup_type]:
+                return date
 
-    def schedule(self):
-        """ Return the schedule from the current date forward """
-        events = OrderedDict()
+    @cached(ttl=DEFAULT_CACHE_SECONDS)
+    @raise_on_invalid_place
+    async def upcoming_schedule(self) -> Dict[datetime, Dict[Enum, bool]]:
+        """Get the upcoming trash/recycling schedule for the location."""
+        events = OrderedDict()  # type: dict
 
-        try:
-            resp = self.get(SCHEDULE_URL.format(self.place_id, SERVICE_ID))
-            calendar = icalendar.Calendar.from_ical(resp.text)
-            for event in calendar.walk('vevent'):
-                raw_date = str(event.decoded('dtstart'))
-                event_date = maya.when(raw_date, timezone=DEFAULT_TIMEZONE)
-                if maya.now() <= event_date:
-                    event_title = event.get('summary').lower()
-                    events[raw_date] = {
-                        'compost': 'compost' in event_title,
-                        'extra_trash': 'extra trash' in event_title,
-                        'recycling': 'recycl' in event_title,
-                        'trash': 'trash' in event_title
+        resp = await self._request(
+            'get',
+            CALENDAR_URL.format(self.place_id, DEFAULT_SERVICE_ID),
+            kind='text')
+        calendar = Calendar(resp)
+
+        now = DEFAULT_TIMEZONE.localize(datetime.now())
+        for event in calendar.events:
+            pickup_date = event.begin.datetime.replace(tzinfo=DEFAULT_TIMEZONE)
+            if now <= pickup_date:
+                title = event.name.lower()
+                if 'trash' in title:
+                    events[pickup_date] = {
+                        self.PickupTypes.compost: 'compost' in title,
+                        self.PickupTypes.extra_trash: 'extra trash' in title,
+                        self.PickupTypes.recycling: 'recycl' in title,
+                        self.PickupTypes.trash: 'trash' in title
                     }
-
-            return events
-        except Exception:
-            raise ValueError('Unable to get trash schedule for place ID: {}'.
-                             format(self.place_id)) from None
+        return OrderedDict(sorted(events.items(), reverse=False))
