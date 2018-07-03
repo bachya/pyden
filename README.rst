@@ -36,7 +36,7 @@ Version 1.0.0 of pyden makes several breaking, but necessary changes:
 * Makes 3.5 the minimum version of Python required
 
 If you wish to continue using the previous, synchronous version of
-pyden, make sure to pin version 1.1.2.
+pyden, make sure to pin version 0.4.1.
 
 📡 Installation
 ===============
