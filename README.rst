@@ -1,5 +1,5 @@
-📡 pyden: A simple Python API for Tile® Bluetooth trackers
-===========================================================
+📡 pyden: A simple Python API for Denver, CO Data
+=================================================
 
 .. image:: https://travis-ci.org/bachya/pyden.svg?branch=master
   :target: https://travis-ci.org/bachya/pyden
