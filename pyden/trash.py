@@ -95,10 +95,8 @@ class Trash(object):
         """Figure out the next pickup date for a particular type."""
         schedule = await self.upcoming_schedule()
         for date, pickups in schedule.items():
-            if pickups[pickup_type] is True:
+            if pickups[pickup_type]:
                 return date
-
-        return None
 
     @cached(ttl=DEFAULT_CACHE_SECONDS)
     @raise_on_invalid_place
