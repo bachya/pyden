@@ -84,8 +84,8 @@ Create a client:
 
 Then, get to it!
 
-Trash Schedule
-==============
+📡 Trash Schedule
+=================
 
 .. code-block:: python
 
