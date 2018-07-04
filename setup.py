@@ -30,7 +30,9 @@ REQUIRED = [
     'async-timeout',
     'geocoder',
     'ics',
-    'pytz'
+    'msgpack',
+    'pytz',
+    'ujson'
 ]
 
 # The rest you shouldn't have to touch too much :)
