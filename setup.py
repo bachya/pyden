@@ -27,6 +27,7 @@ REQUIRED = [
     'aiocache',
     'aiodns',
     'aiohttp',
+    'async-timeout',
     'geocoder',
     'ics',
     'pytz'
