@@ -6,9 +6,9 @@ from aiohttp import ClientSession
 from pyden import Client
 from pyden.errors import PydenError
 
-GOOGLE_API_KEY = 'AIzaSyA_V6RUweRcy2wz_D1fwbO1rXaSrnQ3BmA'
-LATITUDE = 39.7974509
-LONGITUDE = -104.8887227
+GOOGLE_API_KEY = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+LATITUDE = 21.8128723
+LONGITUDE = -100.2391398
 
 
 async def trash(client: Client) -> None:
