@@ -1,14 +1,10 @@
 [[source]]
-
 url = "https://pypi.python.org/simple"
 verify_ssl = true
-
 
 [dev-packages]
 "flake8" = "*"
 aresponses = "*"
-codecov = "*"
-coverage = "*"
 detox = "*"
 mypy = "*"
 pydocstyle = "*"
@@ -18,7 +14,6 @@ pytest-mock = "*"
 pytest-cov = "*"
 tox = "*"
 twine = "*"
-
 
 [packages]
 aiocache = "*"
