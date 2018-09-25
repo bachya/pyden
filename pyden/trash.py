@@ -91,13 +91,12 @@ class Trash:
             raise PydenError('Unable to find Recollect place ID')
 
     @raise_on_invalid_place
-    async def next_pickup(self, pickup_type: Enum) -> Union[None, datetime]:
+    async def next_pickup(self, pickup_type: Enum) -> datetime:  # type: ignore
         """Figure out the next pickup date for a particular type."""
         schedule = await self.upcoming_schedule()
         for date, pickups in schedule.items():
             if pickups[pickup_type]:
                 return date
-        return None
 
     @cached(ttl=DEFAULT_CACHE_SECONDS)
     @raise_on_invalid_place
