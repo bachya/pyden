@@ -3,7 +3,7 @@ import asyncio
 from collections import OrderedDict
 from datetime import datetime
 from enum import Enum
-from typing import Awaitable, Callable, Dict, Union
+from typing import Awaitable, Callable, Dict
 from urllib.parse import quote_plus
 
 from aiocache import cached
