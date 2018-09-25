@@ -9,7 +9,7 @@ lint:
 	pipenv run pydocstyle pyden
 	pipenv run pylint pyden
 publish:
-	python setup.py sdist bdist_wheel
+	pipenv run python setup.py sdist bdist_wheel
 	pipenv run twine upload dist/*
 	rm -rf dist/ build/ .egg pyden.egg-info/
 test:

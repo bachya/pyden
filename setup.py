@@ -1,4 +1,49 @@
-#!/usr/bin/env README and use it as the long-description.
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+"""Define publication options."""
+
+# Note: To use the 'upload' functionality of this file, you must:
+#   $ pip install twine
+
+import io
+import os
+import sys
+from shutil import rmtree
+
+from setuptools import find_packages, setup, Command
+
+# Package meta-data.
+NAME = 'pyden'
+DESCRIPTION = 'A Python API for info from the City and County of Denver, CO'
+URL = 'https://github.com/bachya/pyden'
+EMAIL = 'bachya1208@gmail.com'
+AUTHOR = 'Aaron Bach'
+REQUIRES_PYTHON = '>=3.6.0'
+VERSION = None
+
+# What packages are required for this module to be executed?
+REQUIRED = [
+    'aiocache',
+    'aiodns',
+    'aiohttp',
+    'async-timeout',
+    'geocoder',
+    'ics',
+    'msgpack',
+    'pytz',
+    'ujson'
+]
+
+# The rest you shouldn't have to touch too much :)
+# ------------------------------------------------
+# Except, perhaps the License and Trove Classifiers!
+# If you do change the License, remember to change the Trove Classifier for
+# that!
+
+HERE = os.path.abspath(os.path.dirname(__file__))
+
+# Import the README and use it as the long-description.
 # Note: this will only work if 'README.md' is present in your MANIFEST.in file!
 with io.open(os.path.join(HERE, 'README.md'), encoding='utf-8') as f:
     LONG_DESC = '\n' + f.read()
