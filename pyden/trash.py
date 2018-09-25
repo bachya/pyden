@@ -3,14 +3,14 @@ import asyncio
 from collections import OrderedDict
 from datetime import datetime
 from enum import Enum
-from typing import Awaitable, Callable, Dict
+from typing import Awaitable, Callable, Dict, Union
 from urllib.parse import quote_plus
 
 from aiocache import cached
 
-import geocoder
 import pytz as tz
 from ics import Calendar
+from geocoder import google
 from geocoder.google_reverse import GoogleReverse
 
 from .errors import PydenError
@@ -30,7 +30,6 @@ DEFAULT_TIMEZONE = tz.timezone('America/Denver')
 
 def raise_on_invalid_place(func: Callable) -> Callable:
     """Raise an exception when a place ID hasn't been set."""
-
     async def decorator(self, *args: list, **kwargs: dict) -> Awaitable:
         """Decorate."""
         if not self.place_id:
@@ -40,18 +39,19 @@ def raise_on_invalid_place(func: Callable) -> Callable:
     return decorator
 
 
-class Trash(object):
+class Trash:
     """Define the client."""
 
     class PickupTypes(Enum):
         """Define an enum for presence states."""
+
         compost = 'Compost'
         extra_trash = 'Extra Trash'
         recycling = 'Recycling'
         trash = 'Trash'
 
     def __init__(
-            self, request: Callable[..., Awaitable[dict]],
+            self, request: Callable[..., Awaitable],
             loop: asyncio.AbstractEventLoop) -> None:
         """Initialize."""
         self._loop = loop
@@ -63,9 +63,9 @@ class Trash(object):
             latitude: float, longitude: float,
             google_api_key: str) -> GoogleReverse:
         """Return geo data from a set of coordinates."""
-        return geocoder.google([latitude, longitude],
-                               key=google_api_key,
-                               method='reverse')
+        return google([latitude, longitude],
+                      key=google_api_key,
+                      method='reverse')
 
     async def init_from_coords(
             self, latitude: float, longitude: float,
@@ -80,10 +80,10 @@ class Trash(object):
                 quote_plus(
                     '{0} {1}, {2}, {3}, {4}'.format(
                         geo.housenumber, geo.street_long, geo.city,
-                        geo.state_long, geo.country_long)),
-                DEFAULT_LOCALE, geo.postal, geo.housenumber,
-                quote_plus(geo.street_long), quote_plus(geo.city),
-                quote_plus(geo.state_long), quote_plus(geo.country_long)))
+                        geo.state_long, geo.country_long)), DEFAULT_LOCALE,
+                geo.postal, geo.housenumber, quote_plus(geo.street_long),
+                quote_plus(geo.city), quote_plus(geo.state_long),
+                quote_plus(geo.country_long)))
 
         try:
             self.place_id = lookup['place']['id']
@@ -91,12 +91,13 @@ class Trash(object):
             raise PydenError('Unable to find Recollect place ID')
 
     @raise_on_invalid_place
-    async def next_pickup(self, pickup_type: Enum) -> datetime:
+    async def next_pickup(self, pickup_type: Enum) -> Union[None, datetime]:
         """Figure out the next pickup date for a particular type."""
         schedule = await self.upcoming_schedule()
         for date, pickups in schedule.items():
             if pickups[pickup_type]:
                 return date
+        return None
 
     @cached(ttl=DEFAULT_CACHE_SECONDS)
     @raise_on_invalid_place

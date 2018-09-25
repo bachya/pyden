@@ -1,11 +1,13 @@
 """Define a client to interact with the city and county of Denver."""
+from typing import Union
+
 from aiohttp import ClientSession, client_exceptions
 
 from .errors import RequestError
 from .trash import Trash
 
 
-class Client(object):  # pylint: disable=too-few-public-methods
+class Client:  # pylint: disable=too-few-public-methods
     """Define the client."""
 
     def __init__(self, websession: ClientSession) -> None:
@@ -22,7 +24,7 @@ class Client(object):  # pylint: disable=too-few-public-methods
             kind: str = 'json',
             headers: dict = None,
             params: dict = None,
-            json: dict = None) -> dict:
+            json: dict = None) -> Union[str, dict]:
         """Make a request."""
         async with self._websession.request(method, url, headers=headers,
                                             params=params, json=json) as resp:

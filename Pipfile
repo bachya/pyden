@@ -5,23 +5,22 @@ verify_ssl = true
 
 
 [dev-packages]
-
 "flake8" = "*"
 aresponses = "*"
 codecov = "*"
 coverage = "*"
 detox = "*"
+mypy = "*"
 pydocstyle = "*"
+pylint = "*"
 pytest-aiohttp = "*"
-pytest-cov = "*"
 pytest-mock = "*"
-sphinx = "*"
+pytest-cov = "*"
 tox = "*"
 twine = "*"
 
 
 [packages]
-
 aiocache = "*"
 aiodns = "*"
 aiohttp = "*"

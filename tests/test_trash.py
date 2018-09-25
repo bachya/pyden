@@ -426,7 +426,7 @@ END:VCALENDAR"""
 
 def setup_mock_geocoder(mocker) -> None:
     """Create a mock geocoder object."""
-    mock_geocoder = mocker.patch('geocoder.google')
+    mock_geocoder = mocker.patch('pyden.trash.google')
     type(mock_geocoder.return_value).city = PropertyMock(
         return_value=TEST_CITY)
     type(mock_geocoder.return_value).country_long = PropertyMock(
