@@ -1,8 +1,6 @@
-*.pyc
 .coverage
 .mypy_cache
 .tox/
 Pipfile.lock
-__pycache__
 coverage.xml
-simplisafe_python.egg-info
+pyden.egg-info
