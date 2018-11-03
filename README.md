@@ -23,6 +23,17 @@ Version 1.0.0 of `pyden` makes several breaking, but necessary changes:
 If you wish to continue using the previous, synchronous version of
 `pyden`, make sure to pin version 0.4.1.
 
+# Python Versions
+
+`pyden` is currently supported on:
+
+* Python 3.5
+* Python 3.6
+* Python 3.7
+
+However, running the test suite currently requires Python 3.6 or higher; tests
+run on Python 3.5 will fail.
+
 # Installation
 
 ```python
