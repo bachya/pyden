@@ -5,7 +5,6 @@ verify_ssl = true
 [dev-packages]
 "flake8" = "*"
 aresponses = "*"
-detox = "*"
 mypy = "*"
 pydocstyle = "*"
 pylint = "*"
@@ -17,7 +16,6 @@ twine = "*"
 
 [packages]
 aiocache = "*"
-aiodns = "*"
 aiohttp = "*"
 async-timeout = "*"
 geocoder = "*"
