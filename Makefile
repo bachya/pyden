@@ -1,9 +1,11 @@
+clean:
+	pipenv --rm
 coverage:
 	pipenv run py.test -s --verbose --cov-report term-missing --cov-report xml --cov=pyden tests
 init:
-	pip install --upgrade pip pipenv
+	pip3 install --upgrade pip pipenv
 	pipenv lock
-	pipenv install --dev
+	pipenv install --three --dev
 lint:
 	pipenv run flake8 pyden
 	pipenv run pydocstyle pyden
@@ -14,3 +16,5 @@ publish:
 	rm -rf dist/ build/ .egg pyden.egg-info/
 test:
 	pipenv run py.test
+typing:
+	pipenv run mypy --ignore-missing-imports pyden
