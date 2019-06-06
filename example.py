@@ -6,7 +6,7 @@ from aiohttp import ClientSession
 from pyden import Client
 from pyden.errors import PydenError
 
-GOOGLE_API_KEY = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+GOOGLE_API_KEY = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 LATITUDE = 21.8128723
 LONGITUDE = -100.2391398
 
@@ -15,26 +15,25 @@ async def trash(client: Client) -> None:
     """Output allergen-related information."""
     await client.trash.init_from_coords(LATITUDE, LONGITUDE, GOOGLE_API_KEY)
 
-    print('UPCOMING TRASH SCHEDULE')
+    print("UPCOMING TRASH SCHEDULE")
     schedule = await client.trash.upcoming_schedule()
     for date, types in schedule.items():
-        print(
-            '{0}: {1}'.format(date, [t.value for t, v in types.items() if v]))
+        print("{0}: {1}".format(date, [t.value for t, v in types.items() if v]))
 
     print()
-    print('NEXT DATE FOR TRASH')
+    print("NEXT DATE FOR TRASH")
     print(await client.trash.next_pickup(client.trash.PickupTypes.trash))
 
     print()
-    print('NEXT DATE FOR EXTRA TRASH')
+    print("NEXT DATE FOR EXTRA TRASH")
     print(await client.trash.next_pickup(client.trash.PickupTypes.extra_trash))
 
     print()
-    print('NEXT DATE FOR RECYCLING')
+    print("NEXT DATE FOR RECYCLING")
     print(await client.trash.next_pickup(client.trash.PickupTypes.recycling))
 
     print()
-    print('NEXT DATE FOR COMPOST')
+    print("NEXT DATE FOR COMPOST")
     print(await client.trash.next_pickup(client.trash.PickupTypes.compost))
 
 

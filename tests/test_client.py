@@ -11,10 +11,10 @@ from pyden.errors import RequestError
 async def test_request_error(aresponses, event_loop):
     """Test authenticating the device."""
     aresponses.add(
-        'www.pollen.com', '/api/bad', 'get',
-        aresponses.Response(text='', status=404))
+        "www.pollen.com", "/api/bad", "get", aresponses.Response(text="", status=404)
+    )
 
     with pytest.raises(RequestError):
         async with aiohttp.ClientSession(loop=event_loop) as websession:
             client = Client(websession)
-            await client.request('get', 'http://www.pollen.com/api/bad')
+            await client.request("get", "http://www.pollen.com/api/bad")
