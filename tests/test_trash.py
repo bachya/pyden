@@ -10,12 +10,20 @@ from pyden import Client
 from pyden.errors import PydenError
 
 from .const import (
-    TEST_CITY, TEST_COUNTRY, TEST_GOOGLE_API_KEY, TEST_LATITUDE,
-    TEST_LONGITUDE, TEST_RECOLLECT_PLACE_ID, TEST_STATE, TEST_STREET_NAME,
-    TEST_STREET_NUMBER, TEST_ZIP)
+    TEST_CITY,
+    TEST_COUNTRY,
+    TEST_GOOGLE_API_KEY,
+    TEST_LATITUDE,
+    TEST_LONGITUDE,
+    TEST_RECOLLECT_PLACE_ID,
+    TEST_STATE,
+    TEST_STREET_NAME,
+    TEST_STREET_NUMBER,
+    TEST_ZIP,
+)
 
 
-@pytest.fixture(scope='module')
+@pytest.fixture(scope="module")
 def fixture_lookup():
     """Return an /api/lookup response."""
     return {
@@ -24,21 +32,21 @@ def fixture_lookup():
             "lat": TEST_LATITUDE,
             "locale": "en-US",
             "city": TEST_CITY,
-            "name":
-                '{0} {1}, {2}'.format(
-                    TEST_STREET_NUMBER, TEST_STREET_NAME, TEST_CITY),
+            "name": "{0} {1}, {2}".format(
+                TEST_STREET_NUMBER, TEST_STREET_NAME, TEST_CITY
+            ),
             "province": TEST_STATE,
             "unit": "",
             "lng": TEST_LONGITUDE,
             "street": TEST_STREET_NAME,
             "house": TEST_STREET_NUMBER,
             "id": TEST_RECOLLECT_PLACE_ID,
-            "source": "recollect"
+            "source": "recollect",
         }
     }
 
 
-@pytest.fixture(scope='module')
+@pytest.fixture(scope="module")
 def fixture_lookup_no_place():
     """Return an /api/lookup response without a place ID."""
     return {
@@ -47,20 +55,20 @@ def fixture_lookup_no_place():
             "lat": TEST_LATITUDE,
             "locale": "en-US",
             "city": TEST_CITY,
-            "name":
-                '{0} {1}, {2}'.format(
-                    TEST_STREET_NUMBER, TEST_STREET_NAME, TEST_CITY),
+            "name": "{0} {1}, {2}".format(
+                TEST_STREET_NUMBER, TEST_STREET_NAME, TEST_CITY
+            ),
             "province": TEST_STATE,
             "unit": "",
             "lng": TEST_LONGITUDE,
             "street": TEST_STREET_NAME,
             "house": TEST_STREET_NUMBER,
-            "source": "recollect"
+            "source": "recollect",
         }
     }
 
 
-@pytest.fixture(scope='module')
+@pytest.fixture(scope="module")
 def fixture_schedule():
     """Return an .ics of the calendar schedule."""
     return r"""BEGIN:VCALENDAR
@@ -426,19 +434,19 @@ END:VCALENDAR"""
 
 def setup_mock_geocoder(mocker) -> None:
     """Create a mock geocoder object."""
-    mock_geocoder = mocker.patch('pyden.trash.google')
-    type(mock_geocoder.return_value).city = PropertyMock(
-        return_value=TEST_CITY)
+    mock_geocoder = mocker.patch("pyden.trash.google")
+    type(mock_geocoder.return_value).city = PropertyMock(return_value=TEST_CITY)
     type(mock_geocoder.return_value).country_long = PropertyMock(
-        return_value=TEST_COUNTRY)
+        return_value=TEST_COUNTRY
+    )
     type(mock_geocoder.return_value).housenumber = PropertyMock(
-        return_value=TEST_STREET_NUMBER)
-    type(mock_geocoder.return_value).postal = PropertyMock(
-        return_value=TEST_ZIP)
-    type(mock_geocoder.return_value).state_long = PropertyMock(
-        return_value=TEST_STATE)
+        return_value=TEST_STREET_NUMBER
+    )
+    type(mock_geocoder.return_value).postal = PropertyMock(return_value=TEST_ZIP)
+    type(mock_geocoder.return_value).state_long = PropertyMock(return_value=TEST_STATE)
     type(mock_geocoder.return_value).street_long = PropertyMock(
-        return_value=TEST_STREET_NAME)
+        return_value=TEST_STREET_NAME
+    )
 
 
 @pytest.mark.asyncio
@@ -447,95 +455,111 @@ async def test_init_coords(aresponses, event_loop, fixture_lookup, mocker):
     setup_mock_geocoder(mocker)
 
     aresponses.add(
-        'recollect.net', '/api/lookup/{0},{1}.json'.format(
-            TEST_LATITUDE, TEST_LONGITUDE), 'get',
-        aresponses.Response(text=json.dumps(fixture_lookup), status=200))
+        "recollect.net",
+        "/api/lookup/{0},{1}.json".format(TEST_LATITUDE, TEST_LONGITUDE),
+        "get",
+        aresponses.Response(text=json.dumps(fixture_lookup), status=200),
+    )
 
     async with aiohttp.ClientSession(loop=event_loop) as websession:
         client = Client(websession)
         await client.trash.init_from_coords(
-            TEST_LATITUDE, TEST_LONGITUDE, TEST_GOOGLE_API_KEY)
+            TEST_LATITUDE, TEST_LONGITUDE, TEST_GOOGLE_API_KEY
+        )
         assert client.trash.place_id == TEST_RECOLLECT_PLACE_ID
 
 
 @pytest.mark.asyncio
 async def test_next_pickup(
-        aresponses, event_loop, fixture_lookup, fixture_schedule, mocker):
+    aresponses, event_loop, fixture_lookup, fixture_schedule, mocker
+):
     """Test calling a method before there's a place ID."""
     setup_mock_geocoder(mocker)
 
     aresponses.add(
-        'recollect.net', '/api/lookup/{0},{1}.json'.format(
-            TEST_LATITUDE, TEST_LONGITUDE), 'get',
-        aresponses.Response(text=json.dumps(fixture_lookup), status=200))
+        "recollect.net",
+        "/api/lookup/{0},{1}.json".format(TEST_LATITUDE, TEST_LONGITUDE),
+        "get",
+        aresponses.Response(text=json.dumps(fixture_lookup), status=200),
+    )
     aresponses.add(
-        'recollect.a.ssl.fastly.net',
-        '/api/places/{0}/services/248/events.en-US.ics'.format(
-            TEST_RECOLLECT_PLACE_ID), 'get',
-        aresponses.Response(text=fixture_schedule, status=200))
+        "recollect.a.ssl.fastly.net",
+        "/api/places/{0}/services/248/events.en-US.ics".format(TEST_RECOLLECT_PLACE_ID),
+        "get",
+        aresponses.Response(text=fixture_schedule, status=200),
+    )
 
     async with aiohttp.ClientSession(loop=event_loop) as websession:
         client = Client(websession)
         await client.trash.init_from_coords(
-            TEST_LATITUDE, TEST_LONGITUDE, TEST_GOOGLE_API_KEY)
+            TEST_LATITUDE, TEST_LONGITUDE, TEST_GOOGLE_API_KEY
+        )
         next_recycling_date = await client.trash.next_pickup(
-            client.trash.PickupTypes.recycling)
-        assert str(next_recycling_date) == '2095-06-04 00:00:00-07:00'
+            client.trash.PickupTypes.recycling
+        )
+        assert str(next_recycling_date) == "2095-06-04 00:00:00-07:00"
 
 
 @pytest.mark.asyncio
-async def test_no_place_found(
-        aresponses, event_loop, fixture_lookup_no_place, mocker):
+async def test_no_place_found(aresponses, event_loop, fixture_lookup_no_place, mocker):
     """Test no valid place ID coming from init."""
     setup_mock_geocoder(mocker)
 
     aresponses.add(
-        'recollect.net', '/api/lookup/{0},{1}.json'.format(
-            TEST_LATITUDE, TEST_LONGITUDE), 'get',
-        aresponses.Response(
-            text=json.dumps(fixture_lookup_no_place), status=200))
+        "recollect.net",
+        "/api/lookup/{0},{1}.json".format(TEST_LATITUDE, TEST_LONGITUDE),
+        "get",
+        aresponses.Response(text=json.dumps(fixture_lookup_no_place), status=200),
+    )
 
     with pytest.raises(PydenError):
         async with aiohttp.ClientSession(loop=event_loop) as websession:
             client = Client(websession)
             await client.trash.init_from_coords(
-                TEST_LATITUDE, TEST_LONGITUDE, TEST_GOOGLE_API_KEY)
+                TEST_LATITUDE, TEST_LONGITUDE, TEST_GOOGLE_API_KEY
+            )
 
 
 @pytest.mark.asyncio
 async def test_schedule(
-        aresponses, event_loop, fixture_lookup, fixture_schedule, mocker):
+    aresponses, event_loop, fixture_lookup, fixture_schedule, mocker
+):
     """Test calling a method before there's a place ID."""
     setup_mock_geocoder(mocker)
 
     aresponses.add(
-        'recollect.net', '/api/lookup/{0},{1}.json'.format(
-            TEST_LATITUDE, TEST_LONGITUDE), 'get',
-        aresponses.Response(text=json.dumps(fixture_lookup), status=200))
+        "recollect.net",
+        "/api/lookup/{0},{1}.json".format(TEST_LATITUDE, TEST_LONGITUDE),
+        "get",
+        aresponses.Response(text=json.dumps(fixture_lookup), status=200),
+    )
     aresponses.add(
-        'recollect.a.ssl.fastly.net',
-        '/api/places/{0}/services/248/events.en-US.ics'.format(
-            TEST_RECOLLECT_PLACE_ID), 'get',
-        aresponses.Response(text=fixture_schedule, status=200))
+        "recollect.a.ssl.fastly.net",
+        "/api/places/{0}/services/248/events.en-US.ics".format(TEST_RECOLLECT_PLACE_ID),
+        "get",
+        aresponses.Response(text=fixture_schedule, status=200),
+    )
 
     async with aiohttp.ClientSession(loop=event_loop) as websession:
         client = Client(websession)
         await client.trash.init_from_coords(
-            TEST_LATITUDE, TEST_LONGITUDE, TEST_GOOGLE_API_KEY)
+            TEST_LATITUDE, TEST_LONGITUDE, TEST_GOOGLE_API_KEY
+        )
         schedule = await client.trash.upcoming_schedule()
         assert len(schedule) == 32
 
 
 @pytest.mark.asyncio
-async def test_schedule_no_place(
-        aresponses, event_loop, fixture_lookup, mocker):
+async def test_schedule_no_place(aresponses, event_loop, fixture_lookup, mocker):
     """Test calling a method before there's a place ID."""
     setup_mock_geocoder(mocker)
 
     aresponses.add(
-        'recollect.net', '/api/lookup/{0},{1}.json'.format(
-            TEST_LATITUDE, TEST_LONGITUDE), 'get',
-        aresponses.Response(text=json.dumps(fixture_lookup), status=200))
+        "recollect.net",
+        "/api/lookup/{0},{1}.json".format(TEST_LATITUDE, TEST_LONGITUDE),
+        "get",
+        aresponses.Response(text=json.dumps(fixture_lookup), status=200),
+    )
 
     with pytest.raises(PydenError):
         async with aiohttp.ClientSession(loop=event_loop) as websession:
