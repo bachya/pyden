@@ -33,7 +33,6 @@ DEFAULT_TIMEZONE = tz.timezone("America/Denver")
 
 def raise_on_invalid_place(func: Callable) -> Callable:
     """Raise an exception when a place ID hasn't been set."""
-
     async def decorator(self, *args: list, **kwargs: dict) -> Awaitable:
         """Decorate."""
         if not self.place_id:
